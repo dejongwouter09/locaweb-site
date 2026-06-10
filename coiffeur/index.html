@@ -44,71 +44,85 @@
 
 <!-- HERO -->
 <section class="hero">
-  <div class="hero-left">
+  <div class="hero-bg-img">
+    <img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?w=1400&q=80" alt="">
+  </div>
+  <div class="hero-eyebrow">
+    <div class="hero-eyebrow-line"></div>
     <span class="hero-tag" data-i18n="hero_tag">Salon de coiffure · Genève</span>
-    <h1>
-      <span data-i18n="hero_h1a">L'art de la</span><br>
-      <em data-i18n="hero_h1b">beauté</em><br>
-      <span data-i18n="hero_h1c">à la parisienne</span>
-    </h1>
-    <p class="hero-sub" data-i18n="hero_sub">Coupes, colorations, soins — chaque passage chez Salon Lumière est une expérience. Prenez rendez-vous en quelques secondes.</p>
-    <div class="hero-actions">
-      <a href="https://calendly.com/salon-lumiere/rdv" target="_blank" rel="noopener" class="btn-gold" data-i18n="hero_cta">Réserver maintenant</a>
-      <a href="#services" class="btn-outline" data-i18n="hero_secondary">Voir nos services</a>
-    </div>
-    <div class="hero-stats">
-      <div><span class="stat-num">850+</span><span class="stat-label" data-i18n="stat_clients">Clientes fidèles</span></div>
-      <div><span class="stat-num">15</span><span class="stat-label" data-i18n="stat_years">Ans d'expérience</span></div>
-      <div><span class="stat-num">4.9★</span><span class="stat-label" data-i18n="stat_rating">Note Google</span></div>
-    </div>
+    <div class="hero-eyebrow-line"></div>
   </div>
-  <div class="hero-right">
-    <img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?w=1200&q=85" alt="Salon Lumière">
+  <h1>
+    <span data-i18n="hero_h1a">L'art de la</span><br>
+    <em data-i18n="hero_h1b">beauté</em><br>
+    <span data-i18n="hero_h1c">à la parisienne</span>
+  </h1>
+  <p class="hero-sub" data-i18n="hero_sub">Coupes, colorations, soins — chaque passage chez Salon Lumière est une expérience.</p>
+  <div class="hero-actions">
+    <a href="https://calendly.com/salon-lumiere/rdv" target="_blank" rel="noopener" class="btn-gold" data-i18n="hero_cta">Réserver maintenant</a>
+    <a href="#services" style="color:rgba(255,255,255,0.6);font-size:14px;font-weight:500;text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.3);padding-bottom:2px" data-i18n="hero_secondary">Voir nos services</a>
   </div>
+  <div class="hero-scroll"><div class="hero-scroll-line"></div></div>
 </section>
+
+<!-- MARQUEE -->
+<div class="marquee-strip" aria-hidden="true">
+  <div class="marquee-track">
+    <span>Coupes</span><span>Colorations</span><span>Soins</span><span>Brushing</span><span>Mèches</span><span>Kératine</span>
+    <span>Coupes</span><span>Colorations</span><span>Soins</span><span>Brushing</span><span>Mèches</span><span>Kératine</span>
+    <span>Coupes</span><span>Colorations</span><span>Soins</span><span>Brushing</span><span>Mèches</span><span>Kératine</span>
+    <span>Coupes</span><span>Colorations</span><span>Soins</span><span>Brushing</span><span>Mèches</span><span>Kératine</span>
+  </div>
+</div>
+
+<!-- STATS BAR -->
+<div class="hero-stats-bar">
+  <div class="hero-stat-item"><span class="stat-num">850+</span><span class="stat-label" data-i18n="stat_clients">Clientes fidèles</span></div>
+  <div class="hero-stat-item"><span class="stat-num">15</span><span class="stat-label" data-i18n="stat_years">Ans d'expérience</span></div>
+  <div class="hero-stat-item"><span class="stat-num">4.9★</span><span class="stat-label" data-i18n="stat_rating">Note Google</span></div>
+</div>
 
 <!-- SERVICES -->
 <section class="services" id="services">
   <div class="services-header reveal">
-    <span class="section-tag" data-i18n="services_tag">Nos prestations</span>
-    <h2 class="section-title" data-i18n="services_title">Des services d'exception</h2>
-    <p class="section-sub" data-i18n="services_sub">Chaque prestation est réalisée avec des produits premium et un savoir-faire d'exception.</p>
+    <div>
+      <span class="section-tag" data-i18n="services_tag">Nos prestations</span>
+      <h2 class="section-title" data-i18n="services_title">Des services d'exception</h2>
+    </div>
+    <div class="services-header-right">
+      <p class="section-sub" style="text-align:right" data-i18n="services_sub">Chaque prestation est réalisée avec des produits premium et un savoir-faire d'exception.</p>
+      <a href="https://calendly.com/salon-lumiere/rdv" target="_blank" rel="noopener" class="btn-gold" data-i18n="nav_book">Prendre RDV</a>
+    </div>
   </div>
-  <div class="services-grid">
-    <div class="service-card reveal">
-      <div class="service-number">01</div>
-      <div class="service-name" data-i18n="s1_name">Coupe femme</div>
-      <p class="service-desc" data-i18n="s1_desc">Consultation, coupe, coiffage et finitions soignées</p>
+  <div class="services-list reveal">
+    <div class="service-row">
+      <span class="service-num">01</span>
+      <div class="service-info"><div class="service-name" data-i18n="s1_name">Coupe femme</div><p class="service-desc" data-i18n="s1_desc">Consultation, coupe, coiffage et finitions soignées</p></div>
       <div class="service-price">CHF 65</div>
     </div>
-    <div class="service-card reveal reveal-delay-1">
-      <div class="service-number">02</div>
-      <div class="service-name" data-i18n="s2_name">Coupe homme</div>
-      <p class="service-desc" data-i18n="s2_desc">Coupe classique ou tendance, finitions rasoir</p>
+    <div class="service-row">
+      <span class="service-num">02</span>
+      <div class="service-info"><div class="service-name" data-i18n="s2_name">Coupe homme</div><p class="service-desc" data-i18n="s2_desc">Coupe classique ou tendance, finitions rasoir</p></div>
       <div class="service-price">CHF 45</div>
     </div>
-    <div class="service-card reveal reveal-delay-2">
-      <div class="service-number">03</div>
-      <div class="service-name" data-i18n="s3_name">Coloration</div>
-      <p class="service-desc" data-i18n="s3_desc">Couleur pleine ou balayage, respectueuse du cheveu</p>
+    <div class="service-row">
+      <span class="service-num">03</span>
+      <div class="service-info"><div class="service-name" data-i18n="s3_name">Coloration</div><p class="service-desc" data-i18n="s3_desc">Couleur pleine ou balayage, respectueuse du cheveu</p></div>
       <div class="service-price">CHF 120</div>
     </div>
-    <div class="service-card reveal">
-      <div class="service-number">04</div>
-      <div class="service-name" data-i18n="s4_name">Mèches</div>
-      <p class="service-desc" data-i18n="s4_desc">Mèches fines ou larges pour un effet naturel lumineux</p>
+    <div class="service-row">
+      <span class="service-num">04</span>
+      <div class="service-info"><div class="service-name" data-i18n="s4_name">Mèches</div><p class="service-desc" data-i18n="s4_desc">Mèches fines ou larges pour un effet naturel lumineux</p></div>
       <div class="service-price">CHF 150</div>
     </div>
-    <div class="service-card reveal reveal-delay-1">
-      <div class="service-number">05</div>
-      <div class="service-name" data-i18n="s5_name">Brushing</div>
-      <p class="service-desc" data-i18n="s5_desc">Mise en plis, volume et brillance garantis</p>
+    <div class="service-row">
+      <span class="service-num">05</span>
+      <div class="service-info"><div class="service-name" data-i18n="s5_name">Brushing</div><p class="service-desc" data-i18n="s5_desc">Mise en plis, volume et brillance garantis</p></div>
       <div class="service-price">CHF 40</div>
     </div>
-    <div class="service-card reveal reveal-delay-2">
-      <div class="service-number">06</div>
-      <div class="service-name" data-i18n="s6_name">Soin profond</div>
-      <p class="service-desc" data-i18n="s6_desc">Masque kératine, hydratation intensive sur mesure</p>
+    <div class="service-row">
+      <span class="service-num">06</span>
+      <div class="service-info"><div class="service-name" data-i18n="s6_name">Soin profond</div><p class="service-desc" data-i18n="s6_desc">Masque kératine, hydratation intensive sur mesure</p></div>
       <div class="service-price" data-i18n="s6_price">Sur devis</div>
     </div>
   </div>
