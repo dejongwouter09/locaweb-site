@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Salon Lumière — Coiffeur à Genève</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="demo-ribbon">
+  Démo LocaWeb — <span data-i18n="ribbon">votre salon pourrait ressembler à ceci.</span>
+  <a href="../index.html">← Retour à LocaWeb</a>
+</div>
+
+<nav id="navbar">
+  <a href="index.html" class="nav-logo">Salon <span>Lumière</span></a>
+  <ul class="nav-links">
+    <li><a href="#services" data-i18n="nav_services">Services</a></li>
+    <li><a href="about.html" data-i18n="nav_about">À propos</a></li>
+    <li><a href="contact.html" data-i18n="nav_contact">Contact</a></li>
+  </ul>
+  <div class="nav-right">
+    <button class="lang-toggle">EN</button>
+    <a href="https://calendly.com/salon-lumiere/rdv" target="_blank" rel="noopener" class="nav-cta" data-i18n="nav_book">Prendre RDV</a>
+    <button class="hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#services" data-i18n="nav_services">Services</a>
+  <a href="about.html" data-i18n="nav_about">À propos</a>
+  <a href="contact.html" data-i18n="nav_contact">Contact</a>
+  <a href="https://calendly.com/salon-lumiere/rdv" target="_blank" class="mobile-cta" data-i18n="nav_book">Prendre RDV</a>
+  <div class="mobile-lang">
+    <button data-lang="fr" onclick="setLang('fr')" class="active">🇫🇷 Français</button>
+    <button data-lang="en" onclick="setLang('en')">🇬🇧 English</button>
+  </div>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <span class="hero-tag" data-i18n="hero_tag">Salon de coiffure · Genève</span>
+    <h1>
+      <span data-i18n="hero_h1a">L'art de la</span><br>
+      <em data-i18n="hero_h1b">beauté</em><br>
+      <span data-i18n="hero_h1c">à la parisienne</span>
+    </h1>
+    <p class="hero-sub" data-i18n="hero_sub">Coupes, colorations, soins — chaque passage chez Salon Lumière est une expérience. Prenez rendez-vous en quelques secondes.</p>
+    <div class="hero-actions">
+      <a href="https://calendly.com/salon-lumiere/rdv" target="_blank" rel="noopener" class="btn-gold" data-i18n="hero_cta">Réserver maintenant</a>
+      <a href="#services" class="btn-outline" data-i18n="hero_secondary">Voir nos services</a>
+    </div>
+    <div class="hero-stats">
+      <div><span class="stat-num">850+</span><span class="stat-label" data-i18n="stat_clients">Clientes fidèles</span></div>
+      <div><span class="stat-num">15</span><span class="stat-label" data-i18n="stat_years">Ans d'expérience</span></div>
+      <div><span class="stat-num">4.9★</span><span class="stat-label" data-i18n="stat_rating">Note Google</span></div>
+    </div>
+  </div>
+  <div class="hero-right">
+    <img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?w=1200&q=85" alt="Salon Lumière">
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="services-header reveal">
+    <span class="section-tag" data-i18n="services_tag">Nos prestations</span>
+    <h2 class="section-title" data-i18n="services_title">Des services d'exception</h2>
+    <p class="section-sub" data-i18n="services_sub">Chaque prestation est réalisée avec des produits premium et un savoir-faire d'exception.</p>
+  </div>
+  <div class="services-grid">
+    <div class="service-card reveal">
+      <div class="service-number">01</div>
+      <div class="service-name" data-i18n="s1_name">Coupe femme</div>
+      <p class="service-desc" data-i18n="s1_desc">Consultation, coupe, coiffage et finitions soignées</p>
+      <div class="service-price">CHF 65</div>
+    </div>
+    <div class="service-card reveal reveal-delay-1">
+      <div class="service-number">02</div>
+      <div class="service-name" data-i18n="s2_name">Coupe homme</div>
+      <p class="service-desc" data-i18n="s2_desc">Coupe classique ou tendance, finitions rasoir</p>
+      <div class="service-price">CHF 45</div>
+    </div>
+    <div class="service-card reveal reveal-delay-2">
+      <div class="service-number">03</div>
+      <div class="service-name" data-i18n="s3_name">Coloration</div>
+      <p class="service-desc" data-i18n="s3_desc">Couleur pleine ou balayage, respectueuse du cheveu</p>
+      <div class="service-price">CHF 120</div>
+    </div>
+    <div class="service-card reveal">
+      <div class="service-number">04</div>
+      <div class="service-name" data-i18n="s4_name">Mèches</div>
+      <p class="service-desc" data-i18n="s4_desc">Mèches fines ou larges pour un effet naturel lumineux</p>
+      <div class="service-price">CHF 150</div>
+    </div>
+    <div class="service-card reveal reveal-delay-1">
+      <div class="service-number">05</div>
+      <div class="service-name" data-i18n="s5_name">Brushing</div>
+      <p class="service-desc" data-i18n="s5_desc">Mise en plis, volume et brillance garantis</p>
+      <div class="service-price">CHF 40</div>
+    </div>
+    <div class="service-card reveal reveal-delay-2">
+      <div class="service-number">06</div>
+      <div class="service-name" data-i18n="s6_name">Soin profond</div>
+      <p class="service-desc" data-i18n="s6_desc">Masque kératine, hydratation intensive sur mesure</p>
+      <div class="service-price" data-i18n="s6_price">Sur devis</div>
+    </div>
+  </div>
+</section>
+
+<!-- BOOKING BANNER -->
+<div class="booking-banner reveal">
+  <div>
+    <span class="section-tag" data-i18n="booking_tag">Réservation en ligne</span>
+    <h2 class="section-title" data-i18n="booking_title">Réservez votre créneau</h2>
+    <p class="section-sub" data-i18n="booking_sub">Choisissez votre date en quelques clics. Confirmation immédiate par email.</p>
+  </div>
+  <div class="booking-banner-right">
+    <a href="https://calendly.com/salon-lumiere/rdv" target="_blank" rel="noopener" class="btn-gold" data-i18n="booking_cta">Ouvrir l'agenda →</a>
+    <a href="contact.html" class="btn-outline" style="border-color:rgba(255,255,255,0.2);color:rgba(255,255,255,0.6)" data-i18n="nav_contact">Contact</a>
+  </div>
+</div>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials">
+  <div class="testimonials-header reveal">
+    <span class="section-tag" data-i18n="testimonials_tag">Avis clients</span>
+    <h2 class="section-title" data-i18n="testimonials_title">Ce qu'elles disent</h2>
+  </div>
+  <div class="testimonials-grid">
+    <div class="testimonial reveal">
+      <div class="testimonial-stars">★★★★★</div>
+      <p class="testimonial-text">"Sophie a fait exactement ce que je voulais. Ma coloration est parfaite, naturelle et lumineuse. Je ne vais nulle part ailleurs !"</p>
+      <div class="testimonial-author">
+        <img class="testimonial-avatar" src="https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?w=80&q=80" alt="Claire">
+        <div><div class="testimonial-name">Claire M.</div><div class="testimonial-since">Cliente depuis 2018</div></div>
+      </div>
+    </div>
+    <div class="testimonial reveal reveal-delay-1">
+      <div class="testimonial-stars">★★★★★</div>
+      <p class="testimonial-text">"Camille a transformé mes cheveux. Le balayage est absolument magnifique, et l'ambiance du salon est tellement agréable."</p>
+      <div class="testimonial-author">
+        <img class="testimonial-avatar" src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=80&q=80" alt="Isabelle">
+        <div><div class="testimonial-name">Isabelle R.</div><div class="testimonial-since">Cliente depuis 2020</div></div>
+      </div>
+    </div>
+    <div class="testimonial reveal reveal-delay-2">
+      <div class="testimonial-stars">★★★★★</div>
+      <p class="testimonial-text">"Un salon exceptionnel. L'équipe prend vraiment le temps d'écouter et de conseiller. Je repars toujours comblée."</p>
+      <div class="testimonial-author">
+        <img class="testimonial-avatar" src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=80&q=80" alt="Nina">
+        <div><div class="testimonial-name">Nina B.</div><div class="testimonial-since">Cliente depuis 2021</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-brand">
+    <div class="footer-logo">Salon <span>Lumière</span></div>
+    <p class="footer-tagline">12 Rue de Rive, 1204 Genève<br>+41 22 000 00 00</p>
+    <p class="footer-address" data-i18n="footer_hours">Mar–Sam · 9h–19h</p>
+  </div>
+  <div>
+    <div class="footer-col-title">Navigation</div>
+    <ul class="footer-links">
+      <li><a href="index.html" data-i18n="nav_services">Services</a></li>
+      <li><a href="about.html" data-i18n="nav_about">À propos</a></li>
+      <li><a href="contact.html" data-i18n="nav_contact">Contact</a></li>
+      <li><a href="https://calendly.com/salon-lumiere/rdv" target="_blank" data-i18n="nav_book">Prendre RDV</a></li>
+    </ul>
+  </div>
+  <div>
+    <div class="footer-col-title">Suivez-nous</div>
+    <ul class="footer-links">
+      <li><a href="#">Instagram</a></li>
+      <li><a href="#">Facebook</a></li>
+    </ul>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-bottom-left">© 2025 Salon Lumière · <span data-i18n="footer_copy">Tous droits réservés</span></span>
+    <div class="footer-bottom-right">
+      <span class="footer-ssl">🔒 <span data-i18n="footer_ssl">Site sécurisé HTTPS</span></span>
+      <span class="footer-delivery" data-i18n="footer_delivery">Livré en 7 jours ouvrables</span>
+      <a href="../index.html" class="locaweb-link">Site créé par <span>LocaWeb</span></a>
+    </div>
+  </div>
+</footer>
+
+<a href="https://wa.me/41791234567" class="wa-btn" target="_blank" rel="noopener" aria-label="WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.890-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<script src="js/i18n.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>

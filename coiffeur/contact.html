@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact — Salon Lumière</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="demo-ribbon">
+  Démo LocaWeb — <span data-i18n="ribbon">votre salon pourrait ressembler à ceci.</span>
+  <a href="../index.html">← Retour à LocaWeb</a>
+</div>
+
+<nav id="navbar">
+  <a href="index.html" class="nav-logo">Salon <span>Lumière</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html#services" data-i18n="nav_services">Services</a></li>
+    <li><a href="about.html" data-i18n="nav_about">À propos</a></li>
+    <li><a href="contact.html" data-i18n="nav_contact" style="color:var(--ink)">Contact</a></li>
+  </ul>
+  <div class="nav-right">
+    <button class="lang-toggle">EN</button>
+    <a href="https://calendly.com/salon-lumiere/rdv" target="_blank" rel="noopener" class="nav-cta" data-i18n="nav_book">Prendre RDV</a>
+    <button class="hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html#services" data-i18n="nav_services">Services</a>
+  <a href="about.html" data-i18n="nav_about">À propos</a>
+  <a href="contact.html" data-i18n="nav_contact">Contact</a>
+  <a href="https://calendly.com/salon-lumiere/rdv" target="_blank" class="mobile-cta" data-i18n="nav_book">Prendre RDV</a>
+  <div class="mobile-lang">
+    <button data-lang="fr" onclick="setLang('fr')" class="active">🇫🇷 Français</button>
+    <button data-lang="en" onclick="setLang('en')">🇬🇧 English</button>
+  </div>
+</div>
+
+<!-- PAGE HERO -->
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <span class="section-tag" data-i18n="contact_hero_tag">Nous contacter</span>
+    <h1><span data-i18n="contact_hero_title">Prenons soin</span><br><em data-i18n="contact_hero_title_em">de vous.</em></h1>
+  </div>
+</div>
+
+<!-- BOOKING BANNER (compact) -->
+<div style="background:var(--gold);padding:24px 64px;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap">
+  <p style="color:#fff;font-size:15px;font-weight:500" data-i18n="booking_sub">Choisissez votre date en quelques clics. Confirmation immédiate par email.</p>
+  <a href="https://calendly.com/salon-lumiere/rdv" target="_blank" rel="noopener" style="background:#fff;color:var(--gold);padding:12px 28px;font-size:13px;font-weight:600;text-decoration:none;white-space:nowrap" data-i18n="info_booking_btn">Réserver un créneau →</a>
+</div>
+
+<!-- CONTACT LAYOUT -->
+<div class="contact-layout">
+  <div class="contact-form-side">
+    <span class="section-tag" data-i18n="contact_form_tag">Formulaire</span>
+    <h2 class="section-title" data-i18n="contact_form_title">Envoyez-nous un message</h2>
+    <p class="section-sub" style="margin-bottom:36px" data-i18n="contact_form_sub">Pour une demande particulière, un renseignement ou tout simplement pour nous dire bonjour.</p>
+
+    <form id="contactForm" novalidate>
+      <div class="form-group">
+        <label data-i18n="f_name">Nom complet</label>
+        <input type="text" required data-i18n-ph="f_name_ph" placeholder="Marie Dupont">
+      </div>
+      <div class="form-group">
+        <label data-i18n="f_email">Adresse email</label>
+        <input type="email" required data-i18n-ph="f_email_ph" placeholder="marie@email.com">
+      </div>
+      <div class="form-group">
+        <label data-i18n="f_phone">Téléphone</label>
+        <input type="tel" data-i18n-ph="f_phone_ph" placeholder="+41 79 000 00 00">
+      </div>
+      <div class="form-group">
+        <label data-i18n="f_message">Votre message</label>
+        <textarea rows="5" required data-i18n-ph="f_message_ph" placeholder="Bonjour, je souhaite prendre rendez-vous pour..."></textarea>
+      </div>
+      <button type="submit" class="form-submit" data-i18n="f_submit">Envoyer le message →</button>
+    </form>
+
+    <div class="form-success" id="formSuccess">
+      <div class="form-success-icon">✓</div>
+      <h3 data-i18n="success_title">Message envoyé !</h3>
+      <p data-i18n="success_msg">Nous vous répondrons dans les 24 heures. À très vite !</p>
+    </div>
+  </div>
+
+  <div class="contact-info-side">
+    <span class="section-tag" data-i18n="info_tag">Informations</span>
+    <h2 class="section-title" data-i18n="info_title">Comment nous trouver</h2>
+
+    <div class="info-item">
+      <div class="info-item-label" data-i18n="info_address_label">Adresse</div>
+      <div class="info-item-value"><a href="https://maps.google.com/?q=12+Rue+de+Rive+Geneva" target="_blank" data-i18n="info_address">12 Rue de Rive, 1204 Genève</a></div>
+    </div>
+    <div class="info-item">
+      <div class="info-item-label" data-i18n="info_hours_label">Horaires</div>
+      <div class="info-item-value" data-i18n="info_hours">Mardi – Samedi : 9h00 – 19h00</div>
+    </div>
+    <div class="info-item">
+      <div class="info-item-label" data-i18n="info_phone_label">Téléphone</div>
+      <div class="info-item-value"><a href="tel:+41220000000">+41 22 000 00 00</a></div>
+    </div>
+    <div class="info-item">
+      <div class="info-item-label" data-i18n="info_email_label">Email</div>
+      <div class="info-item-value"><a href="mailto:bonjour@salon-lumiere.ch">bonjour@salon-lumiere.ch</a></div>
+    </div>
+    <div class="info-item">
+      <div class="info-item-label" data-i18n="info_booking_label">Réservation</div>
+      <div class="info-item-value" style="margin-bottom:12px" data-i18n="info_booking">En ligne 24h/24 via Calendly</div>
+      <a href="https://calendly.com/salon-lumiere/rdv" target="_blank" rel="noopener" class="btn-gold" data-i18n="info_booking_btn">Réserver un créneau →</a>
+    </div>
+  </div>
+</div>
+
+<!-- MAP -->
+<div class="map-section">
+  <iframe
+    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2761.8!2d6.1527!3d46.2010!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x478c7b8dc7c3a0c1%3A0x0!2s12%20Rue%20de%20Rive%2C%201204%20Gen%C3%A8ve!5e0!3m2!1sfr!2sch!4v1699000000000"
+    title="Salon Lumière - 12 Rue de Rive, Genève"
+    allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+  </iframe>
+</div>
+
+<footer>
+  <div class="footer-brand">
+    <div class="footer-logo">Salon <span>Lumière</span></div>
+    <p class="footer-tagline">12 Rue de Rive, 1204 Genève<br>+41 22 000 00 00</p>
+    <p class="footer-address" data-i18n="footer_hours">Mar–Sam · 9h–19h</p>
+  </div>
+  <div>
+    <div class="footer-col-title">Navigation</div>
+    <ul class="footer-links">
+      <li><a href="index.html" data-i18n="nav_services">Services</a></li>
+      <li><a href="about.html" data-i18n="nav_about">À propos</a></li>
+      <li><a href="contact.html" data-i18n="nav_contact">Contact</a></li>
+      <li><a href="https://calendly.com/salon-lumiere/rdv" target="_blank" data-i18n="nav_book">Prendre RDV</a></li>
+    </ul>
+  </div>
+  <div>
+    <div class="footer-col-title">Suivez-nous</div>
+    <ul class="footer-links">
+      <li><a href="#">Instagram</a></li>
+      <li><a href="#">Facebook</a></li>
+    </ul>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-bottom-left">© 2025 Salon Lumière · <span data-i18n="footer_copy">Tous droits réservés</span></span>
+    <div class="footer-bottom-right">
+      <span class="footer-ssl">🔒 <span data-i18n="footer_ssl">Site sécurisé HTTPS</span></span>
+      <span class="footer-delivery" data-i18n="footer_delivery">Livré en 7 jours ouvrables</span>
+      <a href="../index.html" class="locaweb-link">Site créé par <span>LocaWeb</span></a>
+    </div>
+  </div>
+</footer>
+
+<a href="https://wa.me/41791234567" class="wa-btn" target="_blank" rel="noopener" aria-label="WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.890-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<script src="js/i18n.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>

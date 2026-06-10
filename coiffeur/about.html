@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>À propos — Salon Lumière</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="demo-ribbon">
+  Démo LocaWeb — <span data-i18n="ribbon">votre salon pourrait ressembler à ceci.</span>
+  <a href="../index.html">← Retour à LocaWeb</a>
+</div>
+
+<nav id="navbar">
+  <a href="index.html" class="nav-logo">Salon <span>Lumière</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html#services" data-i18n="nav_services">Services</a></li>
+    <li><a href="about.html" data-i18n="nav_about" style="color:var(--ink)">À propos</a></li>
+    <li><a href="contact.html" data-i18n="nav_contact">Contact</a></li>
+  </ul>
+  <div class="nav-right">
+    <button class="lang-toggle">EN</button>
+    <a href="https://calendly.com/salon-lumiere/rdv" target="_blank" rel="noopener" class="nav-cta" data-i18n="nav_book">Prendre RDV</a>
+    <button class="hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html#services" data-i18n="nav_services">Services</a>
+  <a href="about.html" data-i18n="nav_about">À propos</a>
+  <a href="contact.html" data-i18n="nav_contact">Contact</a>
+  <a href="https://calendly.com/salon-lumiere/rdv" target="_blank" class="mobile-cta" data-i18n="nav_book">Prendre RDV</a>
+  <div class="mobile-lang">
+    <button data-lang="fr" onclick="setLang('fr')" class="active">🇫🇷 Français</button>
+    <button data-lang="en" onclick="setLang('en')">🇬🇧 English</button>
+  </div>
+</div>
+
+<!-- PAGE HERO -->
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <span class="section-tag" data-i18n="about_hero_tag">L'équipe</span>
+    <h1><span data-i18n="about_hero_title">Derrière chaque coupe,</span><br><em data-i18n="about_hero_title_em">un artiste.</em></h1>
+  </div>
+</div>
+
+<!-- STORY -->
+<section class="story">
+  <div class="story-img reveal">
+    <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=800&q=80" alt="Salon intérieur">
+    <div class="story-badge">
+      <span class="story-badge-num">2009</span>
+      <span class="story-badge-label">Genève</span>
+    </div>
+  </div>
+  <div class="reveal">
+    <span class="section-tag" data-i18n="about_story_tag">Notre histoire</span>
+    <h2 class="section-title" data-i18n="about_story_title">Née d'une passion, construite sur la confiance</h2>
+    <p style="color:var(--grey);font-size:15px;line-height:1.8;margin-bottom:20px" data-i18n="about_story_p1">Salon Lumière a ouvert ses portes en 2009 au cœur de la Rue de Rive, avec une conviction simple : chaque cliente mérite un moment rien que pour elle.</p>
+    <p style="color:var(--grey);font-size:15px;line-height:1.8;margin-bottom:20px" data-i18n="about_story_p2">En 15 ans, nous avons affiné notre approche. Nos stylistes se forment chaque année aux dernières tendances — Paris, Milan, Londres — pour vous offrir le meilleur de la coiffure actuelle.</p>
+    <p style="color:var(--grey);font-size:15px;line-height:1.8;margin-bottom:32px" data-i18n="about_story_p3">Aujourd'hui, Salon Lumière c'est une équipe soudée, des produits premium et une clientèle fidèle qui nous fait confiance semaine après semaine.</p>
+    <a href="contact.html" class="btn-primary" data-i18n="nav_contact">Nous contacter</a>
+  </div>
+</section>
+
+<!-- TEAM -->
+<section class="team">
+  <div class="team-header reveal">
+    <span class="section-tag" data-i18n="team_tag">L'équipe</span>
+    <h2 class="section-title" data-i18n="team_title">Vos stylistes</h2>
+  </div>
+  <div class="team-grid">
+    <div class="team-card reveal">
+      <div class="team-card-img">
+        <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=600&q=80" alt="Sophie Laurent">
+      </div>
+      <div class="team-card-body">
+        <div class="team-card-name" data-i18n="t1_name">Sophie Laurent</div>
+        <div class="team-card-role" data-i18n="t1_role">Directrice artistique & fondatrice</div>
+        <p class="team-card-bio" data-i18n="t1_bio">20 ans de métier, formée à Paris et Milan. Spécialiste des colorations complexes et des coupes structurées.</p>
+      </div>
+    </div>
+    <div class="team-card reveal reveal-delay-1">
+      <div class="team-card-img">
+        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=600&q=80" alt="Camille Dubois">
+      </div>
+      <div class="team-card-body">
+        <div class="team-card-name" data-i18n="t2_name">Camille Dubois</div>
+        <div class="team-card-role" data-i18n="t2_role">Styliste senior</div>
+        <p class="team-card-bio" data-i18n="t2_bio">Experte en balayage et mèches californienne. Passionnée par les looks naturels et lumineux.</p>
+      </div>
+    </div>
+    <div class="team-card reveal reveal-delay-2">
+      <div class="team-card-img">
+        <img src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?w=600&q=80" alt="Léa Martin">
+      </div>
+      <div class="team-card-body">
+        <div class="team-card-name" data-i18n="t3_name">Léa Martin</div>
+        <div class="team-card-role" data-i18n="t3_role">Styliste & coloriste</div>
+        <p class="team-card-bio" data-i18n="t3_bio">Spécialiste des soins capillaires et des transformations. Créative et à l'écoute de chaque envie.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VALUES -->
+<section class="values">
+  <div class="values-header reveal">
+    <span class="section-tag" data-i18n="values_tag">Nos engagements</span>
+    <h2 class="section-title" data-i18n="values_title">Ce en quoi nous croyons</h2>
+  </div>
+  <div class="values-grid">
+    <div class="value-card reveal">
+      <div class="value-icon">🌿</div>
+      <div class="value-title" data-i18n="v1_title">Produits responsables</div>
+      <p class="value-desc" data-i18n="v1_desc">Nous utilisons exclusivement des marques engagées — sans sulfates, sans parabènes, certifiées vegan.</p>
+    </div>
+    <div class="value-card reveal reveal-delay-1">
+      <div class="value-icon">📚</div>
+      <div class="value-title" data-i18n="v2_title">Formation continue</div>
+      <p class="value-desc" data-i18n="v2_desc">Chaque styliste suit au minimum 2 formations par an pour rester à la pointe des tendances.</p>
+    </div>
+    <div class="value-card reveal">
+      <div class="value-icon">💬</div>
+      <div class="value-title" data-i18n="v3_title">Écoute & conseil</div>
+      <p class="value-desc" data-i18n="v3_desc">Chaque rendez-vous commence par une consultation personnalisée pour cerner vos envies et contraintes.</p>
+    </div>
+    <div class="value-card reveal reveal-delay-1">
+      <div class="value-icon">✓</div>
+      <div class="value-title" data-i18n="v4_title">Résultat garanti</div>
+      <p class="value-desc" data-i18n="v4_desc">Si vous n'êtes pas satisfaite, nous faisons le nécessaire. C'est notre promesse.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-brand">
+    <div class="footer-logo">Salon <span>Lumière</span></div>
+    <p class="footer-tagline">12 Rue de Rive, 1204 Genève<br>+41 22 000 00 00</p>
+    <p class="footer-address" data-i18n="footer_hours">Mar–Sam · 9h–19h</p>
+  </div>
+  <div>
+    <div class="footer-col-title">Navigation</div>
+    <ul class="footer-links">
+      <li><a href="index.html" data-i18n="nav_services">Services</a></li>
+      <li><a href="about.html" data-i18n="nav_about">À propos</a></li>
+      <li><a href="contact.html" data-i18n="nav_contact">Contact</a></li>
+      <li><a href="https://calendly.com/salon-lumiere/rdv" target="_blank" data-i18n="nav_book">Prendre RDV</a></li>
+    </ul>
+  </div>
+  <div>
+    <div class="footer-col-title">Suivez-nous</div>
+    <ul class="footer-links">
+      <li><a href="#">Instagram</a></li>
+      <li><a href="#">Facebook</a></li>
+    </ul>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-bottom-left">© 2025 Salon Lumière · <span data-i18n="footer_copy">Tous droits réservés</span></span>
+    <div class="footer-bottom-right">
+      <span class="footer-ssl">🔒 <span data-i18n="footer_ssl">Site sécurisé HTTPS</span></span>
+      <span class="footer-delivery" data-i18n="footer_delivery">Livré en 7 jours ouvrables</span>
+      <a href="../index.html" class="locaweb-link">Site créé par <span>LocaWeb</span></a>
+    </div>
+  </div>
+</footer>
+
+<a href="https://wa.me/41791234567" class="wa-btn" target="_blank" rel="noopener" aria-label="WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.890-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<script src="js/i18n.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
