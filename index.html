@@ -108,33 +108,23 @@
     .section-sub{font-size:15px;color:var(--grey);max-width:500px;line-height:1.65;font-weight:300}
 
     /* ── Offer ── */
-    /* ── Pricing table ── */
-    .pricing-table{margin-top:48px;display:grid;grid-template-columns:1fr 1fr 1fr;border:1px solid var(--border);border-radius:12px;overflow:hidden}
-    .pt-corner{background:#fafafa;border-bottom:1px solid var(--border)}
-    .pt-head{background:#fff;padding:28px 24px 20px;border-left:1px solid var(--border);border-bottom:1px solid var(--border)}
-    .pt-head-pro{background:var(--ink);color:#fff}
-    .pt-badge{font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#6B9FFF;margin-bottom:6px}
-    .pt-plan{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--blue);margin-bottom:8px}
-    .pt-head-pro .pt-plan{color:#6B9FFF}
-    .pt-price{font-family:'Syne',sans-serif;font-size:32px;font-weight:800;letter-spacing:-1px;margin-bottom:2px}
-    .pt-period{font-size:12px;color:var(--grey);margin-bottom:6px}
-    .pt-head-pro .pt-period{color:rgba(255,255,255,0.45)}
-    .pt-monthly{font-size:13px;font-weight:600;margin-bottom:4px}
-    .pt-head-pro .pt-monthly{color:rgba(255,255,255,0.85)}
-    .pt-year{font-size:12px;color:var(--grey)}
-    .pt-head-pro .pt-year{color:rgba(255,255,255,0.45)}
-    .pt-label{background:#fafafa;padding:14px 20px;font-size:13px;color:var(--ink);border-bottom:1px solid var(--border);display:flex;align-items:center}
-    .pt-cell{padding:14px 24px;border-left:1px solid var(--border);border-bottom:1px solid var(--border);font-size:15px;font-weight:600;display:flex;align-items:center;justify-content:center;background:#fff}
-    .pt-cell.pt-pro{background:var(--ink);color:#fff}
-    .pt-yes{color:var(--blue)}
-    .pt-yes.pt-pro{color:#6B9FFF}
-    .pt-no{color:#ccc}
-    .pt-cta{padding:20px 24px;background:#fff;border-left:1px solid var(--border);display:flex;align-items:center;justify-content:center}
-    .pt-cta.pt-pro{background:var(--ink)}
-    .btn-outline{border:1.5px solid var(--ink);color:var(--ink);background:transparent;padding:10px 20px;border-radius:6px;font-size:13px;font-weight:600;text-decoration:none;transition:all .2s}
-    .btn-outline:hover{background:var(--ink);color:#fff}
-    .btn-primary{background:var(--blue);color:#fff;padding:10px 20px;border-radius:6px;font-size:13px;font-weight:600;text-decoration:none;transition:background .2s}
-    .btn-primary:hover{background:#1a56e8}
+    /* ── Offer cards ── */
+    .offer-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1px;background:var(--border);margin-top:48px;border:1px solid var(--border);border-radius:12px;overflow:hidden}
+    .offer-cell{background:#fff;padding:28px 32px;transition:background 0.2s}
+    .offer-cell.featured{background:var(--ink);color:#fff}
+    .offer-tag{font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--blue);margin-bottom:10px}
+    .offer-cell.featured .offer-tag{color:#6B9FFF}
+    .offer-badge{display:inline-block;font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;background:var(--blue);color:#fff;padding:3px 8px;border-radius:4px;margin-bottom:10px}
+    .offer-price{font-family:'Syne',sans-serif;font-size:36px;font-weight:800;letter-spacing:-1px;margin-bottom:4px}
+    .offer-period{font-size:13px;color:var(--grey);margin-bottom:20px}
+    .offer-cell.featured .offer-period{color:rgba(255,255,255,0.5)}
+    .offer-items{list-style:none;display:flex;flex-direction:column;gap:10px}
+    .offer-items li{font-size:14px;display:flex;align-items:flex-start;gap:8px;line-height:1.4}
+    .offer-items li::before{content:'✓';color:var(--blue);font-weight:600;flex-shrink:0;margin-top:1px}
+    .offer-cell.featured .offer-items li::before{color:#6B9FFF}
+    .offer-cell.featured .offer-items li{color:rgba(255,255,255,0.85)}
+    .offer-year{margin-top:20px;padding-top:16px;border-top:1px solid var(--border);font-size:13px;color:var(--grey)}
+    .offer-cell.featured .offer-year{border-top-color:rgba(255,255,255,0.15);color:rgba(255,255,255,0.5)}
 
     /* ── Demo banner ── */
     .demo-banner{
@@ -298,12 +288,8 @@
       .stats-sep{display:none}
 
       .section{padding:48px 20px}
-      .pricing-table{grid-template-columns:1fr 1fr;grid-template-rows:auto}
-      .pt-corner{display:none}
-      .pt-label{grid-column:1/3;border-left:none}
-      .pt-cell{border-bottom:none}
-      .pt-cta{grid-column:1/2}
-      .pt-cta.pt-pro{grid-column:2/3}
+      .offer-grid{grid-template-columns:1fr}
+      .offer-cell{border-bottom:1px solid var(--border)}
 
       .demo-banner{margin:0 20px;padding:24px 20px}
 
@@ -462,61 +448,59 @@
 <!-- OFFRE -->
 <section class="section" id="offre">
   <p class="section-label reveal">Les offres</p>
-  <h2 class="section-title reveal reveal-delay-1">Deux formules, zéro surprise</h2>
-  <p class="section-sub reveal reveal-delay-2">Choisissez le niveau qui correspond à votre commerce — abonnement mensuel identique dans les deux cas.</p>
+  <h2 class="section-title reveal reveal-delay-1">Tout inclus, zéro prise de tête</h2>
+  <p class="section-sub reveal reveal-delay-2">Deux formules de création, un seul abonnement mensuel — pas de surprise, pas de frais cachés.</p>
+  <div class="offer-grid reveal reveal-delay-3">
 
-  <div class="pricing-table reveal reveal-delay-3">
-    <!-- Header -->
-    <div class="pt-corner"></div>
-    <div class="pt-head">
-      <p class="pt-plan">Essentiel</p>
-      <div class="pt-price">CHF 890</div>
-      <p class="pt-period">création · paiement unique</p>
-      <p class="pt-monthly">+ CHF 59 / mois</p>
-      <p class="pt-year">Année 1 : <strong>CHF 1'598</strong></p>
+    <!-- Essentiel -->
+    <div class="offer-cell">
+      <p class="offer-tag">Essentiel</p>
+      <div class="offer-price">CHF 890</div>
+      <p class="offer-period">paiement unique à la livraison</p>
+      <ul class="offer-items">
+        <li>Design sur mesure, responsive mobile</li>
+        <li>Jusqu'à 3 pages (Accueil, À propos, Contact)</li>
+        <li>Formulaire de contact + bouton WhatsApp</li>
+        <li>Google Maps intégré</li>
+        <li>Réservation en ligne (Calendly)</li>
+        <li>Menu en ligne</li>
+        <li>Certificat SSL (https)</li>
+        <li>Livré en 7 jours ouvrables</li>
+      </ul>
+      <p class="offer-year">Année 1 totale : <strong>CHF 1'598</strong></p>
     </div>
-    <div class="pt-head pt-head-pro">
-      <p class="pt-badge">Le plus populaire</p>
-      <p class="pt-plan">Pro</p>
-      <div class="pt-price">CHF 1'390</div>
-      <p class="pt-period">création · paiement unique</p>
-      <p class="pt-monthly">+ CHF 59 / mois</p>
-      <p class="pt-year">Année 1 : <strong>CHF 2'098</strong></p>
+
+    <!-- Pro -->
+    <div class="offer-cell featured">
+      <p class="offer-badge">Le plus populaire</p>
+      <p class="offer-tag">Pro</p>
+      <div class="offer-price">CHF 1'390</div>
+      <p class="offer-period">paiement unique à la livraison</p>
+      <ul class="offer-items">
+        <li>Tout ce qui est dans Essentiel</li>
+        <li>Dashboard client</li>
+        <li>Menu modifiable en autonomie</li>
+        <li>Promos par email</li>
+        <li>Pages supplémentaires incluses</li>
+        <li>Priorité support</li>
+      </ul>
+      <p class="offer-year">Année 1 totale : <strong>CHF 2'098</strong></p>
     </div>
 
-    <!-- Rows -->
-    <div class="pt-label">Pages classiques</div>
-    <div class="pt-cell pt-yes">✓</div>
-    <div class="pt-cell pt-yes pt-pro">✓</div>
+    <!-- Mensuel -->
+    <div class="offer-cell">
+      <p class="offer-tag">Abonnement mensuel</p>
+      <div class="offer-price">CHF 59</div>
+      <p class="offer-period">par mois, résiliable à tout moment</p>
+      <ul class="offer-items">
+        <li>Hébergement + nom de domaine géré</li>
+        <li>Sauvegardes automatiques</li>
+        <li>2 mises à jour de contenu par mois</li>
+        <li>Support technique de base</li>
+        <li>Maintenance et sécurité</li>
+      </ul>
+    </div>
 
-    <div class="pt-label">Formulaire contact</div>
-    <div class="pt-cell pt-yes">✓</div>
-    <div class="pt-cell pt-yes pt-pro">✓</div>
-
-    <div class="pt-label">Réservation en ligne</div>
-    <div class="pt-cell pt-yes">✓</div>
-    <div class="pt-cell pt-yes pt-pro">✓</div>
-
-    <div class="pt-label">Menu en ligne</div>
-    <div class="pt-cell pt-yes">✓</div>
-    <div class="pt-cell pt-yes pt-pro">✓</div>
-
-    <div class="pt-label">Dashboard client</div>
-    <div class="pt-cell pt-no">—</div>
-    <div class="pt-cell pt-yes pt-pro">✓</div>
-
-    <div class="pt-label">Menu modifiable</div>
-    <div class="pt-cell pt-no">—</div>
-    <div class="pt-cell pt-yes pt-pro">✓</div>
-
-    <div class="pt-label">Promos par email</div>
-    <div class="pt-cell pt-no">—</div>
-    <div class="pt-cell pt-yes pt-pro">✓</div>
-
-    <!-- CTA row -->
-    <div class="pt-corner"></div>
-    <div class="pt-cta"><a href="#contact" class="btn btn-outline">Choisir Essentiel</a></div>
-    <div class="pt-cta pt-pro"><a href="#contact" class="btn btn-primary">Choisir Pro</a></div>
   </div>
 </section>
 
