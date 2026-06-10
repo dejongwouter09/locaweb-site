@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Bistrot Lumière — Démo LocaWeb</title>
+<title>Bistrot Lumière — Démo LocaWeb Genève</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
@@ -16,11 +16,12 @@ body{font-family:'Inter',sans-serif;color:var(--black);background:var(--white);f
 .serif{font-family:'Playfair Display',serif}
 
 /* DEMO RIBBON */
-.demo-ribbon{background:var(--black);color:#fff;text-align:center;font-size:12px;font-weight:500;padding:10px 16px;display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap}
-.demo-ribbon a{color:var(--accent);text-decoration:none;font-weight:600}
+.demo-ribbon{position:sticky;top:0;z-index:110;background:var(--black);color:#fff;text-align:center;font-size:12px;font-weight:500;padding:10px 16px;display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap}
+.demo-ribbon a{color:var(--accent);text-decoration:none;font-weight:600;border:1px solid rgba(200,169,110,0.4);padding:4px 12px;border-radius:3px;transition:background 0.2s}
+.demo-ribbon a:hover{background:rgba(200,169,110,0.15)}
 
 /* NAV */
-nav{position:fixed;top:0;left:0;right:0;z-index:100;background:transparent;padding:0 40px;height:72px;display:flex;align-items:center;justify-content:space-between;transition:background 0.4s,box-shadow 0.4s}
+nav{position:sticky;top:0;z-index:100;background:transparent;padding:0 40px;height:72px;display:flex;align-items:center;justify-content:space-between;transition:background 0.4s,box-shadow 0.4s}
 nav.scrolled{background:rgba(249,246,241,0.97);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);box-shadow:0 2px 20px rgba(0,0,0,0.06)}
 nav:not(.scrolled) .nav-links a{color:rgba(255,255,255,0.85)}
 nav:not(.scrolled) .nav-links a:hover{color:#fff}
@@ -207,7 +208,7 @@ footer{background:var(--black);color:var(--white);padding:40px;display:flex;just
 
 <div class="demo-ribbon">
   Ceci est une démo LocaWeb — <span data-i18n="ribbon">votre restaurant pourrait ressembler à ceci.</span>
-  <a href="index.html">← Retour à LocaWeb</a>
+  <a href="index.html">← LocaWeb Genève</a>
 </div>
 
 <nav id="navbar">
@@ -429,7 +430,7 @@ footer{background:var(--black);color:var(--white);padding:40px;display:flex;just
   </ul>
   <div style="display:flex;flex-direction:column;gap:6px;align-items:flex-end">
     <span style="font-size:12px;color:rgba(255,255,255,0.35)">🔒 <span data-i18n="ssl">Site sécurisé HTTPS</span></span>
-    <span class="locaweb-badge">Site créé par <a href="index.html">LocaWeb</a></span>
+    <span class="locaweb-badge">Site créé par <a href="index.html">LocaWeb Genève</a></span>
   </div>
 </footer>
 
