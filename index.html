@@ -1,0 +1,897 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LocaWeb — Sites professionnels pour commerces locaux</title>
+  <meta name="description" content="LocaWeb crée des sites professionnels pour les petits commerces et artisans locaux. Livré en 7 jours. Genève & Suisse.">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box}
+    :root{
+      --ink:#0a0a0a;
+      --blue:#1A6BFF;
+      --blue-light:#EEF4FF;
+      --grey:#6b7280;
+      --border:#e5e7eb;
+      --cream:#f9fafb;
+    }
+    html{scroll-behavior:smooth}
+    body{font-family:'DM Sans',sans-serif;color:var(--ink);background:#fff;font-size:15px;overflow-x:hidden}
+
+    /* ── Animations ── */
+    .reveal{opacity:0;transform:translateY(28px);transition:opacity 0.55s ease,transform 0.55s ease}
+    .reveal.visible{opacity:1;transform:none}
+    .reveal-delay-1{transition-delay:0.1s}
+    .reveal-delay-2{transition-delay:0.2s}
+    .reveal-delay-3{transition-delay:0.3s}
+    .reveal-delay-4{transition-delay:0.4s}
+
+    /* ── Nav ── */
+    nav{
+      border-bottom:1px solid var(--border);
+      padding:0 48px;height:60px;
+      display:flex;align-items:center;justify-content:space-between;
+      background:#fff;position:sticky;top:0;z-index:100;
+      transition:box-shadow 0.2s
+    }
+    nav.scrolled{box-shadow:0 2px 16px rgba(0,0,0,0.06)}
+    .logo{font-family:'Syne',sans-serif;font-size:18px;font-weight:800;letter-spacing:-0.5px;text-decoration:none;color:var(--ink)}
+    .logo span{color:var(--blue)}
+    .nav-links{display:flex;gap:28px;list-style:none}
+    .nav-links a{font-size:13px;color:var(--grey);text-decoration:none;font-weight:500;transition:color 0.15s}
+    .nav-links a:hover{color:var(--ink)}
+    .nav-cta{
+      background:var(--ink);color:#fff;padding:9px 20px;
+      font-size:13px;font-weight:500;text-decoration:none;border-radius:6px;
+      transition:background 0.2s,transform 0.15s
+    }
+    .nav-cta:hover{background:#222;transform:translateY(-1px)}
+
+    /* Hamburger */
+    .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px;background:none;border:none}
+    .hamburger span{display:block;width:22px;height:2px;background:var(--ink);border-radius:2px;transition:transform 0.25s,opacity 0.25s}
+    .hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+    .hamburger.open span:nth-child(2){opacity:0}
+    .hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+    .mobile-menu{
+      display:none;position:fixed;top:60px;left:0;right:0;
+      background:#fff;border-bottom:1px solid var(--border);
+      padding:20px 24px 28px;z-index:99;
+      flex-direction:column;gap:0;
+      box-shadow:0 8px 32px rgba(0,0,0,0.08)
+    }
+    .mobile-menu.open{display:flex}
+    .mobile-menu a{
+      font-size:15px;color:var(--ink);text-decoration:none;font-weight:500;
+      padding:14px 0;border-bottom:1px solid var(--border)
+    }
+    .mobile-menu a:last-child{border-bottom:none}
+    .mobile-menu .mobile-cta{
+      margin-top:16px;background:var(--ink);color:#fff;
+      text-align:center;border-radius:8px;padding:14px;border-bottom:none
+    }
+
+    /* ── Hero ── */
+    .hero{padding:80px 48px 72px;max-width:900px}
+    .hero-badge{
+      display:inline-flex;align-items:center;gap:6px;
+      background:var(--blue-light);color:#185FA5;
+      font-size:12px;font-weight:500;padding:5px 12px;border-radius:20px;margin-bottom:28px
+    }
+    .hero-badge::before{content:'';width:6px;height:6px;background:#1A6BFF;border-radius:50%;display:inline-block;animation:pulse 2s infinite}
+    @keyframes pulse{0%,100%{opacity:1}50%{opacity:0.4}}
+    h1{font-family:'Syne',sans-serif;font-size:clamp(36px,5vw,58px);font-weight:800;line-height:1.08;letter-spacing:-2px;margin-bottom:20px;color:var(--ink)}
+    h1 .blue{color:var(--blue)}
+    .hero-sub{font-size:17px;color:var(--grey);max-width:500px;line-height:1.65;font-weight:300;margin-bottom:36px}
+    .hero-actions{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+    .btn{padding:13px 28px;font-size:14px;font-weight:500;text-decoration:none;border-radius:8px;font-family:'DM Sans',sans-serif;transition:transform 0.15s,box-shadow 0.15s,background 0.15s}
+    .btn-dark{background:var(--ink);color:#fff}
+    .btn-dark:hover{background:#222;transform:translateY(-2px);box-shadow:0 6px 20px rgba(0,0,0,0.18)}
+    .btn-outline{border:1px solid var(--border);color:var(--ink)}
+    .btn-outline:hover{border-color:#aaa;transform:translateY(-2px)}
+    .hero-note{font-size:13px;color:var(--grey);margin-top:16px}
+
+    .divider{height:1px;background:var(--border);margin:0 48px}
+
+    /* ── Stats ── */
+    .stats-bar{padding:28px 48px;display:flex;gap:48px;align-items:center;flex-wrap:wrap}
+    .stat{display:flex;flex-direction:column;gap:2px}
+    .stat-num{font-family:'Syne',sans-serif;font-size:22px;font-weight:700;color:var(--ink)}
+    .stat-label{font-size:12px;color:var(--grey)}
+    .stats-sep{width:1px;height:32px;background:var(--border)}
+
+    /* ── Sections ── */
+    .section{padding:72px 48px}
+    .section-label{font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--blue);margin-bottom:10px}
+    .section-title{font-family:'Syne',sans-serif;font-size:clamp(24px,3vw,34px);font-weight:700;letter-spacing:-1px;margin-bottom:12px}
+    .section-sub{font-size:15px;color:var(--grey);max-width:500px;line-height:1.65;font-weight:300}
+
+    /* ── Offer ── */
+    .offer-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border);margin-top:48px;border:1px solid var(--border);border-radius:12px;overflow:hidden}
+    .offer-cell{background:#fff;padding:28px 32px;transition:background 0.2s}
+    .offer-cell.featured{background:var(--ink);color:#fff}
+    .offer-tag{font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--blue);margin-bottom:10px}
+    .offer-cell.featured .offer-tag{color:#6B9FFF}
+    .offer-price{font-family:'Syne',sans-serif;font-size:36px;font-weight:800;letter-spacing:-1px;margin-bottom:4px}
+    .offer-period{font-size:13px;color:var(--grey);margin-bottom:20px}
+    .offer-cell.featured .offer-period{color:rgba(255,255,255,0.5)}
+    .offer-items{list-style:none;display:flex;flex-direction:column;gap:10px}
+    .offer-items li{font-size:14px;display:flex;align-items:flex-start;gap:8px;line-height:1.4}
+    .offer-items li::before{content:'✓';color:var(--blue);font-weight:600;flex-shrink:0;margin-top:1px}
+    .offer-cell.featured .offer-items li::before{color:#6B9FFF}
+    .offer-cell.featured .offer-items li{color:rgba(255,255,255,0.85)}
+
+    /* ── Demo banner ── */
+    .demo-banner{
+      margin:0 48px;background:var(--blue-light);
+      border:1px solid #B5D4F4;border-radius:12px;
+      padding:32px 36px;display:flex;align-items:center;
+      justify-content:space-between;gap:24px;flex-wrap:wrap
+    }
+    .demo-text h3{font-family:'Syne',sans-serif;font-size:18px;font-weight:700;margin-bottom:6px}
+    .demo-text p{font-size:14px;color:#185FA5}
+    .demo-preview{display:flex;gap:8px}
+    .demo-chip{background:#fff;border:1px solid #B5D4F4;border-radius:6px;padding:6px 14px;font-size:12px;font-weight:500;color:#185FA5}
+
+    /* ── Exemples de sites ── */
+    .examples-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:48px}
+    .example-card{
+      border:1px solid var(--border);border-radius:12px;overflow:hidden;
+      transition:transform 0.2s,box-shadow 0.2s;cursor:pointer;
+      display:block;text-decoration:none;color:inherit;
+    }
+    .example-card:hover{transform:translateY(-4px);box-shadow:0 12px 40px rgba(0,0,0,0.1)}
+    .example-thumb{
+      height:180px;display:flex;align-items:center;justify-content:center;
+      font-size:48px;position:relative;overflow:hidden
+    }
+    .example-thumb-restaurant{background:linear-gradient(135deg,#FFF5E6 0%,#FFE8C2 100%)}
+    .example-thumb-coiffeur{background:linear-gradient(135deg,#F0F4FF 0%,#D6E4FF 100%)}
+    .example-thumb-artisan{background:linear-gradient(135deg,#F0FAF4 0%,#C9F0D8 100%)}
+    .example-thumb-overlay{
+      position:absolute;inset:0;background:rgba(10,10,10,0);
+      display:flex;align-items:center;justify-content:center;
+      transition:background 0.2s
+    }
+    .example-card:hover .example-thumb-overlay{background:rgba(10,10,10,0.12)}
+    .example-thumb-demo{
+      position:absolute;
+      background:var(--ink);color:#fff;
+      font-family:'DM Sans',sans-serif;font-size:12px;font-weight:500;
+      padding:8px 16px;border-radius:20px;
+      opacity:0;transform:translateY(6px);
+      transition:opacity 0.2s,transform 0.2s
+    }
+    .example-card:hover .example-thumb-demo{opacity:1;transform:none}
+    .example-body{padding:18px 20px}
+    .example-type{font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--blue);margin-bottom:6px}
+    .example-name{font-family:'Syne',sans-serif;font-size:16px;font-weight:700;margin-bottom:4px}
+    .example-desc{font-size:13px;color:var(--grey);line-height:1.5}
+    .example-link{
+      display:inline-flex;align-items:center;gap:6px;
+      margin-top:14px;font-size:13px;font-weight:500;
+      color:var(--blue);text-decoration:none;
+      transition:gap 0.15s
+    }
+    .example-link:hover{gap:10px}
+
+    /* ── Process ── */
+    .process{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;margin-top:48px}
+    .step{
+      padding:24px;border:1px solid var(--border);border-radius:12px;position:relative;
+      transition:transform 0.2s,box-shadow 0.2s,border-color 0.2s
+    }
+    .step:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(0,0,0,0.07);border-color:#ccc}
+    .step-num{font-family:'Syne',sans-serif;font-size:11px;font-weight:700;color:var(--blue);letter-spacing:1px;margin-bottom:12px}
+    .step-title{font-size:15px;font-weight:600;margin-bottom:6px;font-family:'Syne',sans-serif}
+    .step-desc{font-size:13px;color:var(--grey);line-height:1.55}
+
+    /* ── Témoignages ── */
+    .testimonials-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:48px}
+    .testi-card{
+      padding:24px 26px;border:1px solid var(--border);border-radius:12px;
+      transition:transform 0.2s,box-shadow 0.2s
+    }
+    .testi-card:hover{transform:translateY(-3px);box-shadow:0 10px 32px rgba(0,0,0,0.07)}
+    .testi-stars{color:#F59E0B;font-size:14px;margin-bottom:14px;letter-spacing:2px}
+    .testi-text{font-size:14px;color:#374151;line-height:1.65;font-style:italic;margin-bottom:18px}
+    .testi-author{display:flex;align-items:center;gap:10px}
+    .testi-avatar{
+      width:38px;height:38px;border-radius:50%;
+      font-family:'Syne',sans-serif;font-size:14px;font-weight:700;
+      display:flex;align-items:center;justify-content:center;color:#fff;flex-shrink:0
+    }
+    .testi-name{font-size:13px;font-weight:600;margin-bottom:2px}
+    .testi-meta{font-size:12px;color:var(--grey)}
+
+    /* ── FAQ ── */
+    .faq{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:48px}
+    .faq-item{
+      padding:20px 24px;border:1px solid var(--border);border-radius:10px;
+      transition:border-color 0.2s,box-shadow 0.2s
+    }
+    .faq-item:hover{border-color:#ccc;box-shadow:0 4px 16px rgba(0,0,0,0.05)}
+    .faq-q{font-size:14px;font-weight:600;margin-bottom:6px;font-family:'Syne',sans-serif}
+    .faq-a{font-size:13px;color:var(--grey);line-height:1.55}
+
+    /* ── CTA ── */
+    .cta-section{
+      background:var(--ink);padding:64px 48px;
+      display:flex;align-items:center;justify-content:space-between;gap:32px;flex-wrap:wrap
+    }
+    .cta-text h2{font-family:'Syne',sans-serif;font-size:clamp(22px,3vw,30px);font-weight:800;color:#fff;letter-spacing:-0.5px;margin-bottom:8px}
+    .cta-text p{font-size:14px;color:rgba(255,255,255,0.5)}
+    .cta-actions{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+    .btn-white{
+      background:#fff;color:var(--ink);padding:13px 28px;
+      font-size:14px;font-weight:600;border-radius:8px;text-decoration:none;
+      font-family:'DM Sans',sans-serif;transition:transform 0.15s,box-shadow 0.15s
+    }
+    .btn-white:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(255,255,255,0.2)}
+    .btn-ghost{
+      border:1px solid rgba(255,255,255,0.2);color:#fff;padding:13px 28px;
+      font-size:14px;border-radius:8px;text-decoration:none;
+      font-family:'DM Sans',sans-serif;transition:border-color 0.2s,transform 0.15s
+    }
+    .btn-ghost:hover{border-color:rgba(255,255,255,0.5);transform:translateY(-2px)}
+    .contact-info{font-size:14px;color:rgba(255,255,255,0.4);margin-top:12px}
+    .contact-info span{color:rgba(255,255,255,0.8)}
+
+    /* ── Footer ── */
+    footer{
+      padding:40px 48px 28px;border-top:1px solid var(--border);
+    }
+    .footer-top{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:32px;margin-bottom:32px}
+    .footer-brand{max-width:260px}
+    .footer-logo{font-family:'Syne',sans-serif;font-size:16px;font-weight:800;margin-bottom:10px;display:block}
+    .footer-logo span{color:var(--blue)}
+    .footer-tagline{font-size:13px;color:var(--grey);line-height:1.6}
+    .footer-cols{display:flex;gap:48px;flex-wrap:wrap}
+    .footer-col h4{font-family:'Syne',sans-serif;font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--ink);margin-bottom:14px}
+    .footer-col ul{list-style:none;display:flex;flex-direction:column;gap:9px}
+    .footer-col a{font-size:13px;color:var(--grey);text-decoration:none;transition:color 0.15s}
+    .footer-col a:hover{color:var(--ink)}
+    .footer-social{display:flex;gap:10px;margin-top:16px}
+    .social-icon{
+      width:34px;height:34px;border:1px solid var(--border);border-radius:8px;
+      display:flex;align-items:center;justify-content:center;
+      text-decoration:none;color:var(--grey);font-size:14px;
+      transition:border-color 0.2s,color 0.2s,transform 0.15s
+    }
+    .social-icon:hover{border-color:var(--ink);color:var(--ink);transform:translateY(-2px)}
+    .footer-bottom{
+      display:flex;justify-content:space-between;align-items:center;
+      flex-wrap:wrap;gap:12px;padding-top:20px;border-top:1px solid var(--border)
+    }
+    .footer-copy{font-size:12px;color:var(--grey)}
+    .footer-legal{display:flex;gap:16px;list-style:none}
+    .footer-legal a{font-size:12px;color:var(--grey);text-decoration:none;transition:color 0.15s}
+    .footer-legal a:hover{color:var(--ink)}
+
+    /* ── Responsive ── */
+    @media(max-width:768px){
+      nav{padding:0 20px}
+      .nav-links,.nav-cta{display:none}
+      .hamburger{display:flex}
+
+      .hero{padding:48px 20px 48px}
+      h1{letter-spacing:-1px}
+      .hero-sub{font-size:15px}
+
+      .divider{margin:0 20px}
+      .stats-bar{padding:20px;gap:20px}
+      .stats-sep{display:none}
+
+      .section{padding:48px 20px}
+      .offer-grid{grid-template-columns:1fr}
+      .offer-cell.featured{order:-1}
+
+      .demo-banner{margin:0 20px;padding:24px 20px}
+
+      .examples-grid{grid-template-columns:1fr;gap:16px}
+      .process{grid-template-columns:1fr 1fr;gap:16px}
+      .testimonials-grid{grid-template-columns:1fr}
+      .faq{grid-template-columns:1fr}
+
+      .cta-section{padding:48px 20px;flex-direction:column;align-items:flex-start}
+      .cta-actions{flex-direction:column;align-items:stretch;width:100%}
+      .btn-white,.btn-ghost{text-align:center}
+
+      footer{padding:32px 20px 20px}
+      .footer-top{flex-direction:column;gap:24px}
+      .footer-cols{gap:28px}
+      .footer-bottom{flex-direction:column;align-items:flex-start;gap:8px}
+    }
+    @media(max-width:480px){
+      .process{grid-template-columns:1fr}
+      .examples-grid{grid-template-columns:1fr}
+    }
+
+    /* ── Modale devis ── */
+    .modal-overlay{
+      position:fixed;inset:0;background:rgba(10,10,10,0.55);
+      z-index:200;display:flex;align-items:center;justify-content:center;
+      padding:20px;opacity:0;pointer-events:none;transition:opacity 0.2s
+    }
+    .modal-overlay.open{opacity:1;pointer-events:auto}
+    .modal{
+      background:#fff;border-radius:16px;width:100%;max-width:520px;
+      max-height:90vh;overflow-y:auto;
+      transform:translateY(16px);transition:transform 0.25s ease;
+      box-shadow:0 24px 64px rgba(0,0,0,0.18)
+    }
+    .modal-overlay.open .modal{transform:none}
+    .modal-header{
+      padding:28px 32px 0;display:flex;align-items:flex-start;justify-content:space-between;gap:12px
+    }
+    .modal-title{font-family:'Syne',sans-serif;font-size:20px;font-weight:800;letter-spacing:-0.5px}
+    .modal-sub{font-size:13px;color:var(--grey);margin-top:4px}
+    .modal-close{
+      background:none;border:none;cursor:pointer;color:var(--grey);
+      width:32px;height:32px;display:flex;align-items:center;justify-content:center;
+      border-radius:6px;flex-shrink:0;transition:background 0.15s
+    }
+    .modal-close:hover{background:var(--cream)}
+    .modal-divider{height:1px;background:var(--border);margin:20px 32px}
+    .modal-or{
+      display:flex;align-items:center;gap:12px;margin:20px 32px;
+    }
+    .modal-or span{font-size:12px;color:var(--grey);white-space:nowrap;font-weight:500}
+    .modal-or::before,.modal-or::after{content:'';flex:1;height:1px;background:var(--border)}
+    .modal-call{
+      margin:0 32px 8px;display:flex;align-items:center;gap:14px;
+      padding:16px 18px;border:1px solid var(--border);border-radius:10px;
+      text-decoration:none;color:var(--ink);transition:border-color 0.2s,box-shadow 0.2s
+    }
+    .modal-call:hover{border-color:#aaa;box-shadow:0 4px 12px rgba(0,0,0,0.06)}
+    .modal-call-icon{
+      width:40px;height:40px;background:var(--blue-light);border-radius:10px;
+      display:flex;align-items:center;justify-content:center;flex-shrink:0
+    }
+    .modal-call-label{font-size:12px;color:var(--grey)}
+    .modal-call-num{font-family:'Syne',sans-serif;font-size:15px;font-weight:700}
+    .modal-form{padding:0 32px 28px;display:flex;flex-direction:column;gap:14px}
+    .form-row-2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+    .form-field{display:flex;flex-direction:column;gap:5px}
+    .form-field label{font-size:11px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--grey)}
+    .form-field input,.form-field select,.form-field textarea{
+      border:1px solid var(--border);border-radius:8px;padding:11px 14px;
+      font-size:14px;font-family:'DM Sans',sans-serif;color:var(--ink);
+      outline:none;transition:border-color 0.2s;background:#fff
+    }
+    .form-field input:focus,.form-field select:focus,.form-field textarea:focus{border-color:var(--blue)}
+    .form-field textarea{resize:vertical;min-height:80px}
+    .form-submit-btn{
+      background:var(--ink);color:#fff;border:none;border-radius:8px;
+      padding:14px;font-size:14px;font-weight:600;cursor:pointer;
+      font-family:'DM Sans',sans-serif;transition:background 0.2s,transform 0.15s;
+      margin-top:4px
+    }
+    .form-submit-btn:hover{background:#222;transform:translateY(-1px)}
+    .form-note{font-size:12px;color:var(--grey);text-align:center}
+    .modal-success{
+      padding:40px 32px;text-align:center;display:none;flex-direction:column;align-items:center;gap:12px
+    }
+    .modal-success.show{display:flex}
+    .modal-success-icon{font-size:40px;margin-bottom:4px}
+    .modal-success h3{font-family:'Syne',sans-serif;font-size:18px;font-weight:800}
+    .modal-success p{font-size:14px;color:var(--grey);max-width:300px;line-height:1.6}
+
+    @media(max-width:480px){
+      .modal-header{padding:20px 20px 0}
+      .modal-divider{margin:16px 20px}
+      .modal-or{margin:16px 20px}
+      .modal-call{margin:0 20px 8px}
+      .modal-form{padding:0 20px 24px}
+      .form-row-2{grid-template-columns:1fr}
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="navbar">
+  <a href="#" class="logo">Loca<span>Web</span></a>
+  <ul class="nav-links">
+    <li><a href="#offre">Offre</a></li>
+    <li><a href="#exemples">Exemples</a></li>
+    <li><a href="#process">Comment ça marche</a></li>
+    <li><a href="#faq">FAQ</a></li>
+  </ul>
+  <button onclick="openModal()" class="nav-cta" style="cursor:pointer;border:none;font-family:'DM Sans',sans-serif">Demander un devis</button>
+  <button class="hamburger" id="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="mobile-menu" id="mobile-menu">
+  <a href="#offre">Offre</a>
+  <a href="#exemples">Exemples</a>
+  <a href="#process">Comment ça marche</a>
+  <a href="#temoignages">Témoignages</a>
+  <a href="#faq">FAQ</a>
+  <button onclick="openModal()" class="mobile-cta" style="cursor:pointer;border:none;font-family:'DM Sans',sans-serif;text-align:center">Demander un devis →</button>
+</div>
+
+<!-- HERO -->
+<div class="hero reveal">
+  <div class="hero-badge">Site livré en 7 jours · Genève &amp; Suisse</div>
+  <h1>Votre commerce mérite<br>un <span class="blue">vrai site web.</span></h1>
+  <p class="hero-sub">LocaWeb crée des sites professionnels pour les petits commerces et artisans locaux. Simple, rapide, abordable — vous vous occupez de votre métier, on s'occupe du reste.</p>
+  <div class="hero-actions">
+    <button onclick="openModal()" class="btn btn-dark" style="cursor:pointer;border:none">Obtenir un devis gratuit →</button>
+    <a href="#exemples" class="btn btn-outline">Voir les exemples</a>
+  </div>
+  <p class="hero-note">Pas d'engagement. Premier contact sans frais.</p>
+</div>
+
+<div class="divider"></div>
+
+<!-- STATS -->
+<div class="stats-bar reveal">
+  <div class="stat"><span class="stat-num">7 jours</span><span class="stat-label">Délai de livraison garanti</span></div>
+  <div class="stats-sep"></div>
+  <div class="stat"><span class="stat-num">CHF 650</span><span class="stat-label">Création one-time</span></div>
+  <div class="stats-sep"></div>
+  <div class="stat"><span class="stat-num">CHF 59 / mois</span><span class="stat-label">Maintenance incluse</span></div>
+  <div class="stats-sep"></div>
+  <div class="stat"><span class="stat-num">100%</span><span class="stat-label">Géré par LocaWeb</span></div>
+</div>
+
+<div class="divider"></div>
+
+<!-- OFFRE -->
+<section class="section" id="offre">
+  <p class="section-label reveal">L'offre</p>
+  <h2 class="section-title reveal reveal-delay-1">Tout inclus, zéro prise de tête</h2>
+  <p class="section-sub reveal reveal-delay-2">Un seul forfait clair — pas de surprise, pas de frais cachés.</p>
+  <div class="offer-grid reveal reveal-delay-3">
+    <div class="offer-cell featured">
+      <p class="offer-tag">Création du site</p>
+      <div class="offer-price">CHF 650</div>
+      <p class="offer-period">paiement unique à la livraison</p>
+      <ul class="offer-items">
+        <li>Design sur mesure, responsive mobile</li>
+        <li>Jusqu'à 3 pages (Accueil, À propos, Contact)</li>
+        <li>Formulaire de contact + bouton WhatsApp</li>
+        <li>Google Maps intégré</li>
+        <li>Réservation en ligne (Calendly)</li>
+        <li>Liens réseaux sociaux</li>
+        <li>Certificat SSL (https)</li>
+        <li>Livré en 7 jours ouvrables</li>
+      </ul>
+    </div>
+    <div class="offer-cell">
+      <p class="offer-tag" style="color:var(--grey)">Abonnement mensuel</p>
+      <div class="offer-price">CHF 59</div>
+      <p class="offer-period">par mois, résiliable à tout moment</p>
+      <ul class="offer-items">
+        <li>Hébergement + nom de domaine géré</li>
+        <li>Sauvegardes automatiques</li>
+        <li>2 mises à jour de contenu par mois</li>
+        <li>Support technique de base</li>
+        <li>Maintenance et sécurité</li>
+        <li style="color:var(--grey);font-style:italic">Options sur devis : pages supp., galerie avancée, click &amp; collect, multilingue…</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- DEMO BANNER -->
+<div class="demo-banner reveal">
+  <div class="demo-text">
+    <h3>Voyez le résultat avant de vous décider</h3>
+    <p>Découvrez nos démos live — c'est exactement ce que vous recevrez.</p>
+  </div>
+  <div style="display:flex;gap:12px;align-items:center;flex-wrap:wrap">
+    <div class="demo-preview">
+      <div class="demo-chip">Restaurant</div>
+      <div class="demo-chip">Coiffeur</div>
+      <div class="demo-chip">Artisan</div>
+    </div>
+    <a href="#exemples" class="btn btn-dark" style="font-size:13px;padding:10px 20px">Voir les exemples →</a>
+  </div>
+</div>
+
+<!-- EXEMPLES DE SITES -->
+<section class="section" id="exemples">
+  <p class="section-label reveal">Exemples de sites</p>
+  <h2 class="section-title reveal reveal-delay-1">Ce qu'on peut créer pour vous</h2>
+  <p class="section-sub reveal reveal-delay-2">Des sites conçus spécifiquement pour chaque type de commerce — design, contenu et fonctionnalités adaptés.</p>
+  <div class="examples-grid">
+    <a class="example-card reveal reveal-delay-1" href="demo-restaurant.html">
+      <div class="example-thumb example-thumb-restaurant">
+        🍝
+        <div class="example-thumb-overlay">
+          <span class="example-thumb-demo">Voir la démo →</span>
+        </div>
+      </div>
+      <div class="example-body">
+        <p class="example-type">Restaurant</p>
+        <p class="example-name">Trattoria da Marco</p>
+        <p class="example-desc">Menu en ligne, réservation Calendly, galerie photos, carte Google Maps, ambiance chaleureuse.</p>
+        <span class="example-link">Voir la démo <span>→</span></span>
+      </div>
+    </a>
+    <a class="example-card reveal reveal-delay-2" href="demo-coiffeur.html">
+      <div class="example-thumb example-thumb-coiffeur">
+        ✂️
+        <div class="example-thumb-overlay">
+          <span class="example-thumb-demo">Voir la démo →</span>
+        </div>
+      </div>
+      <div class="example-body">
+        <p class="example-type">Coiffeur</p>
+        <p class="example-name">Studio Elise</p>
+        <p class="example-desc">Prise de rendez-vous en ligne, galerie avant/après, tarifs, bouton WhatsApp direct.</p>
+        <span class="example-link">Voir la démo <span>→</span></span>
+      </div>
+    </a>
+    <a class="example-card reveal reveal-delay-3" href="demo-artisan.html">
+      <div class="example-thumb example-thumb-artisan">
+        🔨
+        <div class="example-thumb-overlay">
+          <span class="example-thumb-demo">Voir la démo →</span>
+        </div>
+      </div>
+      <div class="example-body">
+        <p class="example-type">Artisan</p>
+        <p class="example-name">Menuiserie Favre</p>
+        <p class="example-desc">Présentation des services, portfolio de réalisations, formulaire de devis, zone d'intervention.</p>
+        <span class="example-link">Voir la démo <span>→</span></span>
+      </div>
+    </a>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="section" id="process" style="background:var(--cream);padding-top:64px;padding-bottom:64px">
+  <p class="section-label reveal">Comment ça marche</p>
+  <h2 class="section-title reveal reveal-delay-1">De zéro à en ligne en 7 jours</h2>
+  <p class="section-sub reveal reveal-delay-2">Un processus simple et sans friction — vous restez concentré sur votre commerce.</p>
+  <div class="process">
+    <div class="step reveal reveal-delay-1">
+      <p class="step-num">01 · Appel</p>
+      <p class="step-title">On discute de votre projet</p>
+      <p class="step-desc">20 minutes pour comprendre votre commerce, vos besoins et l'ambiance souhaitée.</p>
+    </div>
+    <div class="step reveal reveal-delay-2">
+      <p class="step-num">02 · Contenu</p>
+      <p class="step-title">Vous nous envoyez vos infos</p>
+      <p class="step-desc">Textes, photos, horaires, adresse. On vous guide si vous manquez de matière.</p>
+    </div>
+    <div class="step reveal reveal-delay-3" style="border-color:#B5D4F4;background:var(--blue-light)">
+      <p class="step-num">03 · Création</p>
+      <p class="step-title" style="color:#0C447C">On construit votre site</p>
+      <p class="step-desc" style="color:#185FA5">Design, développement, mise en ligne. Vous validez avant publication.</p>
+    </div>
+    <div class="step reveal reveal-delay-4">
+      <p class="step-num">04 · En ligne</p>
+      <p class="step-title">Votre site est live</p>
+      <p class="step-desc">Domaine configuré, hébergement actif, Google Maps intégré. Vous n'avez rien à faire.</p>
+    </div>
+  </div>
+</section>
+
+<!-- TÉMOIGNAGES -->
+<section class="section" id="temoignages">
+  <p class="section-label reveal">Témoignages</p>
+  <h2 class="section-title reveal reveal-delay-1">Ils nous ont fait confiance</h2>
+  <p class="section-sub reveal reveal-delay-2">Des commerces genevois qui ont franchi le pas — et ne le regrettent pas.</p>
+  <div class="testimonials-grid">
+    <div class="testi-card reveal reveal-delay-1">
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-text">"En une semaine, j'avais un site que je n'aurais jamais pu créer moi-même. Mes clients le trouvent beau et pratique. Les réservations en ligne ont vraiment changé mon quotidien — je reçois des demandes même quand je suis en plein service."</p>
+      <div class="testi-author">
+        <div class="testi-avatar" style="background:#E85D2E">SB</div>
+        <div>
+          <p class="testi-name">Sofia Bianchi</p>
+          <p class="testi-meta">Propriétaire · Trattoria da Marco, Genève</p>
+        </div>
+      </div>
+    </div>
+    <div class="testi-card reveal reveal-delay-2">
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-text">"Je n'y connaissais rien en informatique et ça ne m'a posé aucun problème. Wouter a tout géré du début à la fin. Maintenant quand j'ai besoin de changer les tarifs ou d'ajouter une photo, j'envoie un message et c'est fait le lendemain."</p>
+      <div class="testi-author">
+        <div class="testi-avatar" style="background:#1A6BFF">EM</div>
+        <div>
+          <p class="testi-name">Elise Marchand</p>
+          <p class="testi-meta">Gérante · Studio Elise Coiffure, Carouge</p>
+        </div>
+      </div>
+    </div>
+    <div class="testi-card reveal reveal-delay-3">
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-text">"Le rapport qualité-prix est imbattable. Pour CHF 650, j'ai un site qui fait vraiment professionnel et qui me ramène des clients que je n'aurais jamais touchés avant. Le retour sur investissement a été immédiat dès le premier mois."</p>
+      <div class="testi-author">
+        <div class="testi-avatar" style="background:#16A34A">PF</div>
+        <div>
+          <p class="testi-name">Pierre Favre</p>
+          <p class="testi-meta">Artisan · Menuiserie Favre, Meyrin</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section" id="faq" style="background:var(--cream);padding-top:64px;padding-bottom:64px">
+  <p class="section-label reveal">FAQ</p>
+  <h2 class="section-title reveal reveal-delay-1">Questions fréquentes</h2>
+  <div class="faq">
+    <div class="faq-item reveal reveal-delay-1">
+      <p class="faq-q">Est-ce que je garde la propriété de mon domaine ?</p>
+      <p class="faq-a">Oui. Si vous résiliez, on vous transfère le domaine. Il vous appartient.</p>
+    </div>
+    <div class="faq-item reveal reveal-delay-2">
+      <p class="faq-q">Que se passe-t-il si je veux changer quelque chose ?</p>
+      <p class="faq-a">2 mises à jour incluses par mois. Vous envoyez un message, on s'en occupe sous 48h.</p>
+    </div>
+    <div class="faq-item reveal reveal-delay-1">
+      <p class="faq-q">Puis-je annuler l'abonnement ?</p>
+      <p class="faq-a">Oui, à tout moment avec 30 jours de préavis. Aucun engagement long terme.</p>
+    </div>
+    <div class="faq-item reveal reveal-delay-2">
+      <p class="faq-q">Mon site sera-t-il visible sur Google ?</p>
+      <p class="faq-a">Il sera indexé par Google dès la mise en ligne. Un référencement SEO avancé est disponible en option.</p>
+    </div>
+    <div class="faq-item reveal reveal-delay-1">
+      <p class="faq-q">Je n'ai pas de photos professionnelles — c'est un problème ?</p>
+      <p class="faq-a">Non. Des photos de smartphone bien cadrées suffisent pour démarrer. On vous conseille.</p>
+    </div>
+    <div class="faq-item reveal reveal-delay-2">
+      <p class="faq-q">Travaillez-vous uniquement à Genève ?</p>
+      <p class="faq-a">Non, on travaille dans toute la Suisse. Tout se fait à distance ou en présentiel si vous êtes à Genève.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="cta-section reveal">
+  <div class="cta-text">
+    <h2>Prêt à mettre votre commerce en ligne ?</h2>
+    <p>Premier contact gratuit — réponse sous 24h.</p>
+    <p class="contact-info">Ou appelez directement : <span>+41 XX XXX XX XX</span></p>
+  </div>
+  <div>
+    <div class="cta-actions">
+      <button onclick="openModal()" class="btn-white" style="cursor:pointer;border:none">Demander un devis gratuit →</button>
+      <a href="#exemples" class="btn-ghost">Voir les exemples</a>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <span class="footer-logo">Loca<span>Web</span></span>
+      <p class="footer-tagline">Sites professionnels pour les commerces et artisans locaux de Suisse. Livré en 7 jours, géré par nos soins.</p>
+      <div class="footer-social">
+        <a href="#" class="social-icon" aria-label="Instagram">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+        </a>
+        <a href="#" class="social-icon" aria-label="LinkedIn">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+        </a>
+        <a href="#" class="social-icon" aria-label="Facebook">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+        </a>
+        <a href="mailto:contact@locaweb.ch" class="social-icon" aria-label="Email">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        </a>
+      </div>
+    </div>
+    <div class="footer-cols">
+      <div class="footer-col">
+        <h4>Navigation</h4>
+        <ul>
+          <li><a href="#offre">L'offre</a></li>
+          <li><a href="#exemples">Exemples de sites</a></li>
+          <li><a href="#process">Comment ça marche</a></li>
+          <li><a href="#temoignages">Témoignages</a></li>
+          <li><a href="#faq">FAQ</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="mailto:contact@locaweb.ch">contact@locaweb.ch</a></li>
+          <li><a href="tel:+41XXXXXXXXX">+41 XX XXX XX XX</a></li>
+          <li><a href="#">Genève, Suisse</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Légal</h4>
+        <ul>
+          <li><a href="#">Mentions légales</a></li>
+          <li><a href="#">Politique de confidentialité</a></li>
+          <li><a href="#">CGV</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">© 2025 LocaWeb · Genève, Suisse</span>
+    <ul class="footer-legal">
+      <li><a href="#">Mentions légales</a></li>
+      <li><a href="#">Confidentialité</a></li>
+    </ul>
+  </div>
+</footer>
+
+<!-- MODALE DEVIS -->
+<div class="modal-overlay" id="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+  <div class="modal">
+    <div class="modal-header">
+      <div>
+        <p class="modal-title" id="modal-title">Demander un devis gratuit</p>
+        <p class="modal-sub">Réponse sous 24h · Aucun engagement</p>
+      </div>
+      <button class="modal-close" id="modal-close" aria-label="Fermer">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+
+    <div id="modal-body">
+      <!-- Option appel -->
+      <div class="modal-or"><span>Appelez directement</span></div>
+      <a href="tel:+41XXXXXXXXX" class="modal-call">
+        <div class="modal-call-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1A6BFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.56a16 16 0 0 0 6.29 6.29l.96-.96a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        </div>
+        <div>
+          <p class="modal-call-label">Disponible lun–ven 9h–18h</p>
+          <p class="modal-call-num">+41 XX XXX XX XX</p>
+        </div>
+      </a>
+
+      <!-- Séparateur -->
+      <div class="modal-or"><span>Ou envoyez votre demande</span></div>
+
+      <!-- Formulaire -->
+      <form class="modal-form" id="devis-form" novalidate>
+        <div class="form-row-2">
+          <div class="form-field">
+            <label for="f-prenom">Prénom</label>
+            <input type="text" id="f-prenom" placeholder="Marie" required>
+          </div>
+          <div class="form-field">
+            <label for="f-nom">Nom</label>
+            <input type="text" id="f-nom" placeholder="Dupont" required>
+          </div>
+        </div>
+        <div class="form-field">
+          <label for="f-email">Email</label>
+          <input type="email" id="f-email" placeholder="marie@moncommerce.ch" required>
+        </div>
+        <div class="form-field">
+          <label for="f-tel">Téléphone</label>
+          <input type="tel" id="f-tel" placeholder="+41 XX XXX XX XX" required>
+        </div>
+        <div class="form-field">
+          <label for="f-type">Type de commerce</label>
+          <select id="f-type">
+            <option value="">— Choisissez —</option>
+            <option>Restaurant / Café / Bar</option>
+            <option>Coiffeur / Esthéticien</option>
+            <option>Artisan / Menuisier / Plombier</option>
+            <option>Boutique / Commerce de détail</option>
+            <option>Thérapeute / Médecin / Praticien</option>
+            <option>Autre</option>
+          </select>
+        </div>
+        <div class="form-field">
+          <label for="f-message">Votre projet en quelques mots (optionnel)</label>
+          <textarea id="f-message" placeholder="J'ai un restaurant à Genève, je cherche un site avec menu en ligne et formulaire de réservation…"></textarea>
+        </div>
+        <button type="submit" class="form-submit-btn">Envoyer ma demande →</button>
+        <p class="form-note">Vos données ne sont jamais partagées avec des tiers.</p>
+      </form>
+    </div>
+
+    <!-- État succès -->
+    <div class="modal-success" id="modal-success">
+      <div class="modal-success-icon">✅</div>
+      <h3>Demande envoyée !</h3>
+      <p>Merci, nous vous répondons sous 24h. Vérifiez aussi vos spams si besoin.</p>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Sticky nav shadow
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 10);
+  });
+
+  // Hamburger menu
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobile-menu');
+  hamburger.addEventListener('click', () => {
+    const open = mobileMenu.classList.toggle('open');
+    hamburger.classList.toggle('open', open);
+  });
+  mobileMenu.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => {
+      mobileMenu.classList.remove('open');
+      hamburger.classList.remove('open');
+    });
+  });
+
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+  // Hero is above fold — show immediately
+  reveals.forEach(el => {
+    if (el.closest('.hero') || el.getBoundingClientRect().top < window.innerHeight) {
+      el.classList.add('visible');
+    } else {
+      observer.observe(el);
+    }
+  });
+
+  // Modale devis
+  const overlay = document.getElementById('modal-overlay');
+
+  function openModal() {
+    overlay.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    // Fermer le menu mobile si ouvert
+    mobileMenu.classList.remove('open');
+    hamburger.classList.remove('open');
+  }
+
+  function closeModal() {
+    overlay.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  document.getElementById('modal-close').addEventListener('click', closeModal);
+
+  overlay.addEventListener('click', e => {
+    if (e.target === overlay) closeModal();
+  });
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') closeModal();
+  });
+
+  document.getElementById('devis-form').addEventListener('submit', e => {
+    e.preventDefault();
+    const prenom = document.getElementById('f-prenom').value.trim();
+    const nom    = document.getElementById('f-nom').value.trim();
+    const email  = document.getElementById('f-email').value.trim();
+    const type   = document.getElementById('f-type').value;
+    const tel    = document.getElementById('f-tel').value.trim();
+    const msg    = document.getElementById('f-message').value.trim();
+
+    if (!prenom || !nom || !email || !tel) {
+      alert('Merci de remplir votre prénom, nom, email et numéro de téléphone.');
+      return;
+    }
+
+    // Ouvre le client mail avec les infos pré-remplies
+    const subject = encodeURIComponent(`Demande de devis — ${prenom} ${nom}`);
+    const body = encodeURIComponent(
+      `Prénom : ${prenom}\nNom : ${nom}\nEmail : ${email}\nTéléphone : ${tel || '—'}\nType de commerce : ${type || '—'}\n\nMessage :\n${msg || '—'}`
+    );
+    window.location.href = `mailto:contact@locaweb.ch?subject=${subject}&body=${body}`;
+
+    document.getElementById('modal-body').style.display = 'none';
+    document.getElementById('modal-success').classList.add('show');
+  });
+</script>
+</body>
+</html>

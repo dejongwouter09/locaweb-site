@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Menuiserie Favre — Démo LocaWeb</title>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box}
+    :root{--ink:#0a0a0a;--blue:#1A6BFF;--accent:#16A34A;--grey:#6b7280;--border:#e5e7eb;--cream:#f9fafb}
+    body{font-family:'DM Sans',sans-serif;color:var(--ink);background:#fff;font-size:15px}
+
+    .demo-ribbon{background:var(--ink);color:#fff;text-align:center;font-size:12px;font-weight:500;padding:10px 16px;display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap}
+    .demo-ribbon a{color:#6B9FFF;text-decoration:none;font-weight:600}
+
+    nav{padding:0 48px;height:64px;display:flex;align-items:center;justify-content:space-between;background:#fff;border-bottom:1px solid var(--border)}
+    .logo{font-family:'Syne',sans-serif;font-size:20px;font-weight:800;letter-spacing:-0.5px}
+    .logo em{color:var(--accent);font-style:normal}
+    .nav-links{display:flex;gap:28px;list-style:none}
+    .nav-links a{font-size:13px;color:var(--grey);text-decoration:none;font-weight:500}
+    .nav-links a:hover{color:var(--ink)}
+    .nav-cta{background:var(--accent);color:#fff;padding:10px 22px;font-size:13px;font-weight:600;text-decoration:none;border-radius:6px}
+
+    .hero{position:relative;height:480px;display:flex;align-items:center;overflow:hidden}
+    .hero-bg{position:absolute;inset:0;background:linear-gradient(135deg,#0D1F12 0%,#1A3A22 60%,#16A34A18 100%)}
+    .hero-pattern{position:absolute;inset:0;opacity:0.04;background-image:repeating-linear-gradient(45deg,#fff 0,#fff 1px,transparent 0,transparent 50%);background-size:20px 20px}
+    .hero-content{position:relative;padding:0 48px;max-width:620px}
+    .hero-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(22,163,74,0.2);color:#6EE7A0;font-size:12px;font-weight:500;padding:5px 12px;border-radius:20px;margin-bottom:20px}
+    .hero h1{font-family:'Syne',sans-serif;font-size:clamp(32px,5vw,52px);font-weight:800;line-height:1.08;letter-spacing:-1.5px;color:#fff;margin-bottom:14px}
+    .hero h1 em{color:#6EE7A0;font-style:normal}
+    .hero-sub{font-size:16px;color:rgba(255,255,255,0.65);line-height:1.65;font-weight:300;margin-bottom:28px;max-width:460px}
+    .hero-actions{display:flex;gap:10px;flex-wrap:wrap}
+    .btn-green{background:var(--accent);color:#fff;padding:13px 26px;font-size:14px;font-weight:600;text-decoration:none;border-radius:8px}
+    .btn-ghost-white{border:1px solid rgba(255,255,255,0.25);color:#fff;padding:13px 26px;font-size:14px;text-decoration:none;border-radius:8px}
+    .hero-meta{display:flex;gap:20px;margin-top:20px;flex-wrap:wrap}
+    .hero-meta-item{font-size:13px;color:rgba(255,255,255,0.55)}
+    .hero-meta-item span{color:rgba(255,255,255,0.9)}
+    .trust-bar{display:flex;gap:24px;margin-top:28px;flex-wrap:wrap}
+    .trust-item{display:flex;align-items:center;gap:6px;font-size:12px;color:rgba(255,255,255,0.5)}
+    .trust-item strong{color:rgba(255,255,255,0.85);font-weight:600}
+
+    .section{padding:64px 48px}
+    .section-label{font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--accent);margin-bottom:10px}
+    .section-title{font-family:'Syne',sans-serif;font-size:clamp(22px,3vw,32px);font-weight:700;letter-spacing:-0.8px;margin-bottom:12px}
+    .section-sub{font-size:15px;color:var(--grey);max-width:480px;line-height:1.65;font-weight:300}
+
+    .services-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:40px}
+    .service-card{padding:24px;border:1px solid var(--border);border-radius:12px;display:flex;gap:16px;align-items:flex-start;transition:border-color 0.2s,box-shadow 0.2s}
+    .service-card:hover{border-color:#BBF7D0;box-shadow:0 6px 20px rgba(22,163,74,0.08)}
+    .service-icon{font-size:28px;flex-shrink:0}
+    .service-name{font-family:'Syne',sans-serif;font-size:15px;font-weight:700;margin-bottom:4px}
+    .service-desc{font-size:13px;color:var(--grey);line-height:1.5}
+
+    .portfolio-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:40px}
+    .portfolio-item{border-radius:10px;overflow:hidden;border:1px solid var(--border)}
+    .portfolio-thumb{aspect-ratio:4/3;display:flex;align-items:center;justify-content:center;font-size:44px}
+    .p1{background:linear-gradient(135deg,#F0FAF4,#C9F0D8)}
+    .p2{background:linear-gradient(135deg,#E8F5ED,#B8E8C8)}
+    .p3{background:linear-gradient(135deg,#F5FAF6,#D4EFE0)}
+    .p4{background:linear-gradient(135deg,#EAF4EE,#C2E8D4)}
+    .p5{background:linear-gradient(135deg,#F2F9F4,#CCEEDD)}
+    .p6{background:linear-gradient(135deg,#ECF6F0,#C0E8D0)}
+    .portfolio-caption{padding:12px 14px;background:#fff}
+    .portfolio-caption p{font-size:13px;font-weight:600;margin-bottom:2px}
+    .portfolio-caption span{font-size:12px;color:var(--grey)}
+
+    .process-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:40px}
+    .process-step{padding:20px;border:1px solid var(--border);border-radius:12px;text-align:center}
+    .process-num{font-family:'Syne',sans-serif;font-size:24px;font-weight:800;color:var(--accent);margin-bottom:8px}
+    .process-title{font-family:'Syne',sans-serif;font-size:14px;font-weight:700;margin-bottom:6px}
+    .process-desc{font-size:12px;color:var(--grey);line-height:1.5}
+
+    .devis-section{background:var(--ink);padding:56px 48px;display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap}
+    .devis-text h2{font-family:'Syne',sans-serif;font-size:clamp(20px,3vw,28px);font-weight:800;color:#fff;margin-bottom:8px}
+    .devis-text p{font-size:14px;color:rgba(255,255,255,0.5)}
+    .devis-actions{display:flex;gap:10px;flex-wrap:wrap}
+
+    .info-grid{display:grid;grid-template-columns:1fr 1fr;gap:32px;margin-top:40px;align-items:start}
+    .info-block h3{font-family:'Syne',sans-serif;font-size:16px;font-weight:700;margin-bottom:14px}
+    .info-row{display:flex;gap:10px;padding:10px 0;border-bottom:1px solid var(--border);font-size:14px}
+    .info-row:last-child{border-bottom:none}
+    .info-label{color:var(--grey);min-width:120px}
+    .info-value{font-weight:500}
+    .map-placeholder{height:240px;border-radius:12px;background:linear-gradient(135deg,#EEF4FF,#D6E8FF);display:flex;align-items:center;justify-content:center;font-size:48px;border:1px solid #B5D4F4}
+
+    footer{padding:28px 48px;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+    .footer-logo{font-family:'Syne',sans-serif;font-size:16px;font-weight:800}
+    .footer-logo em{color:var(--accent);font-style:normal}
+    .footer-links{display:flex;gap:20px;list-style:none}
+    .footer-links a{font-size:13px;color:var(--grey);text-decoration:none}
+
+    @media(max-width:768px){
+      nav{padding:0 20px}
+      .nav-links{display:none}
+      .hero{height:auto;padding:48px 0}
+      .hero-content{padding:0 20px}
+      .section{padding:48px 20px}
+      .services-grid,.portfolio-grid,.info-grid{grid-template-columns:1fr}
+      .process-grid{grid-template-columns:1fr 1fr}
+      .devis-section{padding:40px 20px}
+      footer{padding:20px}
+    }
+    @media(max-width:480px){
+      .process-grid{grid-template-columns:1fr}
+    }
+  </style>
+</head>
+<body>
+
+<div class="demo-ribbon">
+  Ceci est une démo LocaWeb — votre site ressemblerait à ceci.
+  <a href="index.html">← Retour à LocaWeb</a>
+</div>
+
+<nav>
+  <div class="logo">Menuiserie <em>Favre</em></div>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#portfolio">Réalisations</a></li>
+    <li><a href="#process">Notre process</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="#contact" class="nav-cta">Demander un devis</a>
+</nav>
+
+<div class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-pattern"></div>
+  <div class="hero-content">
+    <div class="hero-badge">🔨 Menuisier artisan · Meyrin, Genève</div>
+    <h1>L'artisanat au service<br>de <em>votre intérieur.</em></h1>
+    <p class="hero-sub">Cuisine sur mesure, aménagement de placards, parquet et menuiserie intérieure. Devis gratuit sous 48h.</p>
+    <div class="hero-actions">
+      <a href="#contact" class="btn-green">Demander un devis gratuit</a>
+      <a href="#portfolio" class="btn-ghost-white">Voir les réalisations</a>
+    </div>
+    <div class="trust-bar">
+      <div class="trust-item">✓ <strong>+120 chantiers</strong> réalisés</div>
+      <div class="trust-item">✓ <strong>Devis sous 48h</strong></div>
+      <div class="trust-item">✓ <strong>Garantie 2 ans</strong></div>
+    </div>
+  </div>
+</div>
+
+<section class="section" id="services">
+  <p class="section-label">Nos services</p>
+  <h2 class="section-title">Ce qu'on réalise pour vous</h2>
+  <p class="section-sub">Chaque projet est unique — on fabrique et installe tout sur mesure dans nos ateliers.</p>
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="service-icon">🍳</div>
+      <div>
+        <p class="service-name">Cuisine sur mesure</p>
+        <p class="service-desc">Conception, fabrication et installation complète. Plans 3D fournis avant démarrage des travaux.</p>
+      </div>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🚪</div>
+      <div>
+        <p class="service-name">Placards &amp; rangements</p>
+        <p class="service-desc">Dressings, bibliothèques intégrées, sous-escaliers. Optimisation de chaque centimètre.</p>
+      </div>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🪵</div>
+      <div>
+        <p class="service-name">Parquet &amp; revêtements</p>
+        <p class="service-desc">Pose de parquet massif, flottant ou stratifié. Ponçage et vitrification de l'existant.</p>
+      </div>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🏠</div>
+      <div>
+        <p class="service-name">Aménagement intérieur</p>
+        <p class="service-desc">Cloisons, faux-plafonds, habillages muraux. Petits travaux de rénovation acceptés.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="portfolio" style="background:var(--cream);padding-top:56px;padding-bottom:56px">
+  <p class="section-label">Réalisations</p>
+  <h2 class="section-title">Quelques projets récents</h2>
+  <div class="portfolio-grid">
+    <div class="portfolio-item">
+      <div class="portfolio-thumb p1">🍳</div>
+      <div class="portfolio-caption"><p>Cuisine ouverte</p><span>Appartement · Genève</span></div>
+    </div>
+    <div class="portfolio-item">
+      <div class="portfolio-thumb p2">👗</div>
+      <div class="portfolio-caption"><p>Dressing sur mesure</p><span>Villa · Cologny</span></div>
+    </div>
+    <div class="portfolio-item">
+      <div class="portfolio-thumb p3">📚</div>
+      <div class="portfolio-caption"><p>Bibliothèque intégrée</p><span>Bureau · Carouge</span></div>
+    </div>
+    <div class="portfolio-item">
+      <div class="portfolio-thumb p4">🪵</div>
+      <div class="portfolio-caption"><p>Parquet chêne massif</p><span>Maison · Meyrin</span></div>
+    </div>
+    <div class="portfolio-item">
+      <div class="portfolio-thumb p5">🚪</div>
+      <div class="portfolio-caption"><p>Placards coulissants</p><span>Appartement · Lancy</span></div>
+    </div>
+    <div class="portfolio-item">
+      <div class="portfolio-thumb p6">🛁</div>
+      <div class="portfolio-caption"><p>Meuble salle de bain</p><span>Penthouse · Genève</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="process">
+  <p class="section-label">Comment ça marche</p>
+  <h2 class="section-title">De la visite à la livraison</h2>
+  <div class="process-grid">
+    <div class="process-step">
+      <div class="process-num">01</div>
+      <p class="process-title">Visite & devis</p>
+      <p class="process-desc">On se déplace chez vous, prenons les mesures et établissons un devis détaillé sous 48h.</p>
+    </div>
+    <div class="process-step">
+      <div class="process-num">02</div>
+      <p class="process-title">Plans 3D</p>
+      <p class="process-desc">On vous soumet des plans 3D et un choix de matériaux pour valider ensemble avant fabrication.</p>
+    </div>
+    <div class="process-step">
+      <div class="process-num">03</div>
+      <p class="process-title">Fabrication</p>
+      <p class="process-desc">Fabrication dans notre atelier à Meyrin avec des matériaux sélectionnés pour leur durabilité.</p>
+    </div>
+    <div class="process-step">
+      <div class="process-num">04</div>
+      <p class="process-title">Installation</p>
+      <p class="process-desc">Pose soignée chez vous, nettoyage du chantier inclus. Garantie 2 ans sur toutes nos réalisations.</p>
+    </div>
+  </div>
+</section>
+
+<div class="devis-section" id="contact">
+  <div class="devis-text">
+    <h2>Un projet en tête ?</h2>
+    <p>Devis gratuit · Déplacement offert dans le Grand Genève.</p>
+  </div>
+  <div class="devis-actions">
+    <a href="mailto:contact@menuiserie-favre.ch" class="btn-green">Demander un devis →</a>
+    <a href="tel:+41XXXXXXXXX" style="border:1px solid rgba(255,255,255,0.2);color:#fff;padding:13px 26px;font-size:14px;text-decoration:none;border-radius:8px">+41 XX XXX XX XX</a>
+  </div>
+</div>
+
+<section class="section">
+  <p class="section-label">Informations</p>
+  <h2 class="section-title">Nous trouver</h2>
+  <div class="info-grid">
+    <div class="info-block">
+      <h3>Coordonnées</h3>
+      <div class="info-row"><span class="info-label">Lundi–Vendredi</span><span class="info-value">7h–17h</span></div>
+      <div class="info-row"><span class="info-label">Samedi</span><span class="info-value">8h–12h (sur RDV)</span></div>
+      <div class="info-row"><span class="info-label">Téléphone</span><span class="info-value">+41 22 XXX XX XX</span></div>
+      <div class="info-row"><span class="info-label">Email</span><span class="info-value">contact@menuiserie-favre.ch</span></div>
+      <div class="info-row"><span class="info-label">Atelier</span><span class="info-value">Zone industrielle de Meyrin</span></div>
+      <div class="info-row"><span class="info-label">Zone</span><span class="info-value">Grand Genève &amp; Suisse romande</span></div>
+    </div>
+    <div>
+      <div class="map-placeholder">🗺️</div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo">Menuiserie <em>Favre</em></div>
+  <ul class="footer-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#portfolio">Réalisations</a></li>
+    <li><a href="#contact">Devis</a></li>
+  </ul>
+  <div style="font-size:12px;color:var(--grey)">Site créé par <a href="index.html" style="color:var(--blue);text-decoration:none">LocaWeb</a></div>
+</footer>
+
+</body>
+</html>
