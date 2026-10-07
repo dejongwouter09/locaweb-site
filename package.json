@@ -1,0 +1,19 @@
+{
+  "name": "locaweb-bloc-club",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "node server.js",
+    "build": "node scripts/build.js",
+    "test": "node --test",
+    "test:redis": "node scripts/verify-redis.js"
+  },
+  "dependencies": {
+    "three": "0.180.0",
+    "ws": "8.18.3"
+  },
+  "engines": {
+    "node": "24.x"
+  }
+}
