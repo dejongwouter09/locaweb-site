@@ -1,7 +1,7 @@
 {
-  "buildCommand": "npm run build",
+  "installCommand": "true",
+  "buildCommand": "true",
   "outputDirectory": "dist",
   "framework": null,
-  "functions": {"api/game.js": {"maxDuration": 15}},
-  "headers": [{"source": "/(.*)", "headers": [{"key":"X-Content-Type-Options","value":"nosniff"}]}]
+  "headers": [{ "source": "/(.*)", "headers": [{ "key": "X-Content-Type-Options", "value": "nosniff" }] }]
 }
